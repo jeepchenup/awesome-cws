@@ -1,5 +1,6 @@
 package info.chen.awsome_cws.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,11 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employee implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer emp_no;
+	@Column(name = "emp_no")
+	private Integer id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -36,10 +38,10 @@ public class Employee {
 	private Date hireDate;
 	
 	public Integer getId() {
-		return emp_no;
+		return id;
 	}
 	public void setId(Integer id) {
-		this.emp_no = id;
+		this.id = id;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -73,7 +75,7 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + emp_no + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", birthDate=" + birthDate + ", hireDate=" + hireDate + "]";
 	}
 	

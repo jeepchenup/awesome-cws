@@ -1,6 +1,6 @@
 package info.chen.awsome_cws.dao;
 
-import java.util.Set;
+import java.util.List;
 
 import info.chen.awsome_cws.entity.Employee;
 
@@ -8,6 +8,11 @@ public interface EmployeeDao {
 	
 	Employee findEmployeeByEmpID(int id);
 	
-	Set<Employee> getEmployees();
+	List<Employee> getEmployees(int limitNum);
+
+	void addEmployee(Employee employee);
 	
+	void updateEmployee(Employee employee);
+	
+	void deleteEmployee(Employee employee);
 }

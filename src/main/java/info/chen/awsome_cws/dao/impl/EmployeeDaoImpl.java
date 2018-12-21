@@ -1,27 +1,20 @@
 package info.chen.awsome_cws.dao.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
+import info.chen.awsome_cws.dao.AbstractDao;
 import info.chen.awsome_cws.dao.EmployeeDao;
 import info.chen.awsome_cws.entity.Employee;
 
 @Repository("employeeDao")
 @Transactional
-public class EmployeeDaoImpl implements EmployeeDao {
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
 
 	@Override
 	public Employee findEmployeeByEmpID(int id) {
@@ -30,9 +23,27 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Set<Employee> getEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getEmployees(int limitNum) {
+		Criteria critria = getCriteria();
+		if(limitNum != 0) {
+			critria.setMaxResults(limitNum);
+		}
+		return critria.list();
 	}
 
+	@Override
+	public void addEmployee(Employee employee) {
+		persistEntity(employee);
+	}
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		updateEntity(employee);
+	}
+
+	@Override
+	public void deleteEmployee(Employee employee) {
+		deleteEntity(employee);
+	}
+	
 }
