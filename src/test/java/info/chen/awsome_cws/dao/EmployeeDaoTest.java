@@ -1,14 +1,10 @@
+
 package info.chen.awsome_cws.dao;
 
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +57,13 @@ public class EmployeeDaoTest {
 		employee.setHireDate(CommonUtils.getDate(2018, 12, 31));
 		
 		employeeDao.addEmployee(employee);
+	}
+	
+	@Test
+	public void testDeleteEmployee() {
+		Employee employee = employeeDao.findEmployeeByEmpID(50001);
+		System.out.println(employee);
+		employeeDao.deleteEmployee(employee);
+		System.out.println(employee);
 	}
 }
