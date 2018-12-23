@@ -12,17 +12,17 @@ import javax.persistence.Table;
 public class Department implements Serializable {
 
 	@Id
-	@Column(name="dept_no")
-	private char id;
+	@Column(name="dept_no", columnDefinition="char")
+	private String id;
 	
 	@Column(name="dept_name")
 	private String name;
 
-	public char getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(char id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -6,7 +6,7 @@ import info.chen.awsome_cws.entity.Department;
 
 public interface DepartmentDao {
 
-	Department getDepartmentById(int id);
+	Department getDepartmentById(String id);
 
 	List<Department> getAllDepartment();
 
