@@ -7,11 +7,14 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import org.hibernate.annotations.Type;
+
 @Embeddable
 public class SalaryID implements Serializable{
 
 	Integer empNo;
 	
+	@Type(type = "date")
 	Date fromDate;
 	
 	public SalaryID() {
@@ -19,6 +22,22 @@ public class SalaryID implements Serializable{
 	
 	public SalaryID(Integer empNo, Date fromDate) {
 		this.empNo = empNo;
+		this.fromDate = fromDate;
+	}
+	
+	public Integer getEmpNo() {
+		return empNo;
+	}
+
+	public void setEmpNo(Integer empNo) {
+		this.empNo = empNo;
+	}
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
 		this.fromDate = fromDate;
 	}
 

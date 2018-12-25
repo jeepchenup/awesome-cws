@@ -7,13 +7,18 @@ import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.Type;
 
 import info.chen.awsome_cws.entity.composite_id.SalaryID;
 
@@ -30,11 +35,12 @@ public class Salary implements Serializable{
 	private Integer salary;
 	
 	@Column(name="to_date")
+	@Type(type = "date")
 	private Date toDate;
 	
 	// 一条工资信息只能找到一条员工的信息
 	@MapsId("emp_no")
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "emp_no", referencedColumnName="emp_no", nullable = false)
 	private Employee employee;
 

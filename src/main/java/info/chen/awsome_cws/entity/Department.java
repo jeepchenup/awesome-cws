@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Department implements Serializable {
 
 	@Id
-	@Column(name="dept_no", columnDefinition="char")
+	@Column(name="dept_no", columnDefinition="char(4)")
 	private String id;
 	
 	@Column(name="dept_name")

@@ -34,9 +34,11 @@ public class Employee implements Serializable{
 	private Gender gender;
 	
 	@Column(name = "birth_date")
+	@Type(type = "date")
 	private Date birthDate;
 	
 	@Column(name = "hire_date")
+	@Type(type = "date")
 	private Date hireDate;
 	
 	public Integer getId() {
