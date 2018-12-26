@@ -2,14 +2,20 @@ package info.chen.awsome_cws.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -40,6 +46,13 @@ public class Employee implements Serializable{
 	@Column(name = "hire_date")
 	@Type(type = "date")
 	private Date hireDate;
+	
+	/*@ManyToMany(fetch = FetchType.LAZY, 
+				targetEntity = Department.class,
+				mappedBy = "id")
+	@JoinTable(name = "department_employee",
+			   joinColumns = @JoinColumn(name = "emp_no"))
+	private Set<Department> departments = new HashSet<Department>();*/
 	
 	public Integer getId() {
 		return id;

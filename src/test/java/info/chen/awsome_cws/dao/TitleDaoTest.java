@@ -12,27 +12,26 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import info.chen.awsome_cws.configuration.HibernateConfiguration;
-import info.chen.awsome_cws.entity.Salary;
+import info.chen.awsome_cws.entity.Title;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = HibernateConfiguration.class)
+@ContextConfiguration(classes = {HibernateConfiguration.class})
 @WebAppConfiguration
-public class SalaryDaoTest {
+public class TitleDaoTest {
 
 	@Autowired
-	private SalaryDao salaryDao;
+	TitleDao titleDao;
 	
 	@Test
-	public void testSalaryDaoNotNull() {
-		assertNotNull(salaryDao);
+	public void testTitleDaoNotNull() {
+		assertNotNull(titleDao);
 	}
 	
 	@Test
-	public void testGetSalariesByEmployeeID() {
-		List<Salary> salaries = salaryDao.getSalariesByEmployeeID(10001);
-		System.out.println(salaries.size());
-		for(Salary salary : salaries) {
-			System.out.println(salary);
+	public void testGetTitlesByEmployeeID() {
+		List<Title> titles = titleDao.getTitlesByEmployeeID(10009);
+		for(Title title : titles) {
+			System.out.println(title);
 		}
 	}
 }

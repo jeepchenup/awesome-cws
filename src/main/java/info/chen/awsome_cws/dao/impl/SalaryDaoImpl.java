@@ -11,6 +11,7 @@ import info.chen.awsome_cws.dao.SalaryDao;
 import info.chen.awsome_cws.entity.Salary;
 
 @Repository
+@Transactional
 public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 
 	@Override

@@ -19,7 +19,9 @@ public class SalaryServiceImpl implements SalaryService {
 
 	@Override
 	public List<Salary> getSalariesByEmployeeID(Integer id) {
-		return salaryDao.getSalariesByEmployeeID(id);
+		List<Salary> salaries = salaryDao.getSalariesByEmployeeID(id);
+		System.out.println(salaries.get(0).getEmployee());
+		return salaries;
 	}
 
 }

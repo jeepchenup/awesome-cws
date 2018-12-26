@@ -1,4 +1,4 @@
-package info.chen.awsome_cws.dao;
+package info.chen.awsome_cws.service;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -9,30 +9,26 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import info.chen.awsome_cws.configuration.HibernateConfiguration;
+import info.chen.awsome_cws.configuration.WebAppConfiguration;
 import info.chen.awsome_cws.entity.Salary;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = HibernateConfiguration.class)
-@WebAppConfiguration
-public class SalaryDaoTest {
+@RunWith(value=SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes= {WebAppConfiguration.class, HibernateConfiguration.class})
+@org.springframework.test.context.web.WebAppConfiguration
+public class SalaryServiceTest {
 
 	@Autowired
-	private SalaryDao salaryDao;
+	SalaryService salaryService;
 	
 	@Test
-	public void testSalaryDaoNotNull() {
-		assertNotNull(salaryDao);
+	public void testSalaryServiceNotNull() {
+		assertNotNull(salaryService);
 	}
 	
 	@Test
 	public void testGetSalariesByEmployeeID() {
-		List<Salary> salaries = salaryDao.getSalariesByEmployeeID(10001);
-		System.out.println(salaries.size());
-		for(Salary salary : salaries) {
-			System.out.println(salary);
-		}
+		List<Salary> salaries = salaryService.getSalariesByEmployeeID(10001);
 	}
 }
