@@ -47,13 +47,6 @@ public class Employee implements Serializable{
 	@Type(type = "date")
 	private Date hireDate;
 	
-	/*@ManyToMany(fetch = FetchType.LAZY, 
-				targetEntity = Department.class,
-				mappedBy = "id")
-	@JoinTable(name = "department_employee",
-			   joinColumns = @JoinColumn(name = "emp_no"))
-	private Set<Department> departments = new HashSet<Department>();*/
-	
 	public Integer getId() {
 		return id;
 	}
