@@ -18,7 +18,7 @@ import info.chen.awsome_cws.entity.composite_id.DepartmentEmployeeID;
 
 @Entity
 @Table(name = "department_employee")
-public class DepatmentEmployee implements Serializable{
+public class DepartmentEmployee implements Serializable{
 
 	@EmbeddedId
 	@AttributeOverrides(value = { @AttributeOverride(column = @Column(name = "dept_no", columnDefinition = "char(4)"), name = "deptNo"),
@@ -31,12 +31,12 @@ public class DepatmentEmployee implements Serializable{
 	@Column(name = "to_date", columnDefinition = "date")
 	private Date toDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("emp_no")
 	@JoinColumn(referencedColumnName = "emp_no", name = "emp_no")
 	private Employee employee;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("dept_no")
 	@JoinColumn(referencedColumnName = "dept_no", name = "dept_no")
 	private Department department;

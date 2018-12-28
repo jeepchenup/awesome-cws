@@ -30,12 +30,12 @@ public class DepartmentManager implements Serializable {
 	@Column(name = "to_date", columnDefinition = "date")
 	private Date toDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("emp_no")
 	@JoinColumn(referencedColumnName = "emp_no", name = "emp_no")
 	private Employee manager;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("dept_no")
 	@JoinColumn(referencedColumnName = "dept_no", name = "dept_no")
 	private Department department;
