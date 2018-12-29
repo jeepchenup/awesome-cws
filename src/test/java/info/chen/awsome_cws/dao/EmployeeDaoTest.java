@@ -4,6 +4,7 @@ package info.chen.awsome_cws.dao;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import info.chen.awsome_cws.configuration.HibernateConfiguration;
+import info.chen.awsome_cws.entity.Department;
 import info.chen.awsome_cws.entity.Employee;
 import info.chen.awsome_cws.entity.Gender;
 import info.chen.awsome_cws.util.CommonUtils;
@@ -65,5 +67,11 @@ public class EmployeeDaoTest {
 		System.out.println(employee);
 		employeeDao.deleteEmployee(employee);
 		System.out.println(employee);
+	}
+	
+	@Test
+	public void testGetDepartmentsByEmployeeID() {
+		Set<Department> departments = employeeDao.getDepartmentsByEmployeeID(10010);
+		System.out.println(departments.size());
 	}
 }

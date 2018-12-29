@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -46,6 +47,9 @@ public class Employee implements Serializable{
 	@Column(name = "hire_date")
 	@Type(type = "date")
 	private Date hireDate;
+	
+	@OneToMany(mappedBy = "employee")
+	private Set<DepartmentEmployee> departmentEmployees = new HashSet<DepartmentEmployee>();
 	
 	public Integer getId() {
 		return id;
@@ -82,6 +86,12 @@ public class Employee implements Serializable{
 	}
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
+	}
+	public Set<DepartmentEmployee> getDepartmentEmployees() {
+		return departmentEmployees;
+	}
+	public void setDepartmentEmployees(Set<DepartmentEmployee> departmentEmployees) {
+		this.departmentEmployees = departmentEmployees;
 	}
 	@Override
 	public String toString() {

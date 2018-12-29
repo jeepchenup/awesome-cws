@@ -1,5 +1,6 @@
 package info.chen.awsome_cws.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -20,16 +21,27 @@ public class DepartmentEmployeeDaoImpl extends AbstractDao<DepartmentEmployee> i
 
 	@Override
 	public List<Department> getDepartmentsByEmployeeID(Integer empNo) {
-		DepartmentEmployeeID departmentEmployeeID = new DepartmentEmployeeID();
-		departmentEmployeeID.setEmpNo(empNo);
-		return (List<Department>) getSession().get(DepartmentEmployee.class, departmentEmployeeID);
+		Query query = getQuery("FROM DepartmentEmployee WHERE emp_no=:empNo");
+		query.setInteger("empNo", empNo);
+		List<DepartmentEmployee> deptEmps = query.list();
+		List<Department> departments = new ArrayList<Department>();
+		for(DepartmentEmployee deptEmp : deptEmps) {
+			departments.add(deptEmp.getDepartment());
+		}
+		return departments;
 	}
 
 	@Override
 	public List<Employee> getEmployeesByDepartmentID(String deptNo) {
-		Query query = getQuery("FROM DepartmentEmployee WHERE dept_no = :deptNo");
+		List<Employee> employees = new ArrayList<Employee>();
+		
+		Query query = getQuery("FROM DepartmentEmployee WHERE dept_no=:deptNo");
 		query.setString("deptNo", deptNo);
-		return query.list();
+		List<DepartmentEmployee> deptEmps = query.list();
+		for(DepartmentEmployee deptEmp : deptEmps) {
+			employees.add(deptEmp.getEmployee());
+		}
+		return employees;
 	}
 
 }

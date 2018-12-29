@@ -33,8 +33,14 @@ public class DepartmentEmployeeDaoTest {
 	public void testGetDepartmentsByEmployeeID() {
 		List<Department> departments = departmentEmployeeDao.getDepartmentsByEmployeeID(10010);
 		System.out.println(departments.size());
-		/*for(Department department : departments) {
+		for(Department department : departments) {
 			System.out.println(department);
-		}*/
+		}
+	}
+	
+	@Test
+	public void testGetEmployeesByDepartmentID() {
+		List<Employee> employees = departmentEmployeeDao.getEmployeesByDepartmentID("d001");
+		System.out.println(employees.size());
 	}
 }

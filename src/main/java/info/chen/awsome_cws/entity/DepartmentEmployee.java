@@ -65,6 +65,22 @@ public class DepartmentEmployee implements Serializable{
 		this.toDate = toDate;
 	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
 		return "DepartmentManager [deID=" + deID + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";

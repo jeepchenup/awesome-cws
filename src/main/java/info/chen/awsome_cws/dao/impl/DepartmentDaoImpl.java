@@ -1,6 +1,9 @@
 package info.chen.awsome_cws.dao.impl;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -10,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import info.chen.awsome_cws.dao.AbstractDao;
 import info.chen.awsome_cws.dao.DepartmentDao;
 import info.chen.awsome_cws.entity.Department;
+import info.chen.awsome_cws.entity.DepartmentEmployee;
+import info.chen.awsome_cws.entity.Employee;
 
 @Repository
 @Transactional
@@ -40,6 +45,19 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	@Override
 	public Department getDepartmentById(String id) {
 		return (Department) getSession().get(Department.class, id);
+	}
+
+	@Override
+	public Set<Employee> getEmployeesByDepartmentID(String deptNo) {
+		Set<Employee> employees = new HashSet<Employee>();
+		
+		Department department = getDepartmentById(deptNo);
+		Set<DepartmentEmployee> deptEmpSet = department.getDeptEmpSet();
+		Iterator<DepartmentEmployee> iterator = deptEmpSet.iterator();
+		while(iterator.hasNext()) {
+			employees.add(iterator.next().getEmployee());
+		}
+		return employees;
 	}
 
 }

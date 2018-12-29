@@ -3,6 +3,7 @@ package info.chen.awsome_cws.dao;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import info.chen.awsome_cws.configuration.HibernateConfiguration;
 import info.chen.awsome_cws.entity.Department;
+import info.chen.awsome_cws.entity.Employee;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = HibernateConfiguration.class)
@@ -66,6 +68,12 @@ public class DepartmentDaoTest {
 			departmentDao.deleteDepartment(department);
 			System.out.println(department);
 		}
+	}
+	
+	@Test
+	public void testGetEmployeesByDepartmentID() {
+		Set<Employee> employees = departmentDao.getEmployeesByDepartmentID("d001");
+		System.out.println(employees.size());
 	}
 
 }

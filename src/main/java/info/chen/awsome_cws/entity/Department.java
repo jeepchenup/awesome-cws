@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +20,9 @@ public class Department implements Serializable {
 	
 	@Column(name="dept_name")
 	private String name;
+	
+	@OneToMany(mappedBy = "department")
+	private Set<DepartmentEmployee> deptEmpSet = new HashSet<DepartmentEmployee>();
 
 	public String getId() {
 		return id;
@@ -35,6 +38,14 @@ public class Department implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<DepartmentEmployee> getDeptEmpSet() {
+		return deptEmpSet;
+	}
+
+	public void setDeptEmpSet(Set<DepartmentEmployee> deptEmpSet) {
+		this.deptEmpSet = deptEmpSet;
 	}
 
 	@Override
