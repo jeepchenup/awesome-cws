@@ -5,7 +5,7 @@
 	<groupId>info.chen</groupId>
 	<artifactId>awsome-cws</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>201812</version>
 	<name>awsome-cws</name>
 
 	<properties>
