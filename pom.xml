@@ -4,15 +4,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.chen</groupId>
 	<artifactId>awsome-cws</artifactId>
-	<packaging>war</packaging>
-	<version>201812</version>
-	<name>awsome-cws</name>
+	<packaging>pom</packaging>
+	<version>2019.01-SNAPSHOT</version>
+	<name>awsome-cws-root</name>
 
 	<properties>
 		<spring-version>4.2.5.RELEASE</spring-version>
 		<hibernate-version>4.3.11.Final</hibernate-version>
 		<mysql.connector.version>5.1.31</mysql.connector.version>
 	</properties>
+	
+	<modules>
+		<module>awsome-cws-persist</module>
+	</modules>
 
 	<dependencies>
 
