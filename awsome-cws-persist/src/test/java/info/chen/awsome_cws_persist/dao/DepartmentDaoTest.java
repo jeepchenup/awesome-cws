@@ -35,4 +35,9 @@ public class DepartmentDaoTest extends TestCase{
 		assertNotNull(sessionFactory);
 	}
 	
+	@Test
+	public void testGetDepartmentById() {
+		
+	}
+	
 }
