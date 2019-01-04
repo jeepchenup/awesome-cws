@@ -1,43 +1,37 @@
 package info.chen.awsome_cws_persist.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import info.chen.awsome_cws_persist.util.HibernateUtils;
+import info.chen.awsome_cws_persist.entity.Department;
 import junit.framework.TestCase;
 
-public class DepartmentDaoTest extends TestCase{
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:junitBeans.xml")
+public class DepartmentDaoTest extends TestCase {
 	
-	private SessionFactory sessionFactory;
-	private Session session;
-	private Transaction transaction;
-
+	@Autowired
+	private DepartmentDao departmentDao;
+	
 	@Override
 	protected void setUp() throws Exception {
-		sessionFactory = HibernateUtils.getSessionFactory();
-		session = sessionFactory.openSession();
-		transaction = session.beginTransaction();
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
-		transaction.commit();
-		if(session != null) {
-			session.close();
-		}
-		sessionFactory.close();
 	}
 
 	@Test
-	public void testSessionFactoryNotNull() {
-		assertNotNull(sessionFactory);
+	public void testDepartmentDaoNotNull() {
+		assertNotNull(departmentDao);
 	}
 	
 	@Test
 	public void testGetDepartmentById() {
-		
+		Department department = departmentDao.getDepartmentById("d001");
 	}
 	
 }
