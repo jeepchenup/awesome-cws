@@ -8,9 +8,9 @@ import info.chen.awsome_cws_persist.entity.Employee;
 
 public interface EmployeeDao {
 	
-	Employee findEmployeeByEmpID(Integer id);
+	Employee getEmployeeByEmpID(Integer id);
 	
-	List<Employee> getEmployees(Integer limitNum);
+	List<Employee> getAllEmployees(Integer limitNum);
 
 	void addEmployee(Employee employee);
 	

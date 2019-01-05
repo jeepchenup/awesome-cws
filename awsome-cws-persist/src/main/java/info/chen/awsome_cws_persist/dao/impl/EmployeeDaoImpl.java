@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome_cws_persist.dao.AbstractDao;
 import info.chen.awsome_cws_persist.dao.EmployeeDao;
@@ -15,17 +16,18 @@ import info.chen.awsome_cws_persist.entity.DepartmentEmployee;
 import info.chen.awsome_cws_persist.entity.Employee;
 
 @Repository("employeeDao")
+@Transactional
 public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
-
+	
 	@Override
-	public Employee findEmployeeByEmpID(Integer id) {
+	public Employee getEmployeeByEmpID(Integer id) {
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> getEmployees(Integer limitNum) {
+	public List<Employee> getAllEmployees(Integer limitNum) {
 		Criteria critria = getCriteria();
 		if(limitNum != 0) {
 			critria.setMaxResults(limitNum);
@@ -50,7 +52,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 
 	@Override
 	public Set<Department> getDepartmentsByEmployeeID(Integer id) {
-		Employee employee = findEmployeeByEmpID(id);
+		Employee employee = getEmployeeByEmpID(id);
 		Set<DepartmentEmployee> deSet = employee.getDepartmentEmployees();
 		Set<Department> departments = new HashSet<Department>();
 		Iterator<DepartmentEmployee> iterator = deSet.iterator();

@@ -75,6 +75,49 @@ public class Salary implements Serializable{
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((employee == null) ? 0 : employee.hashCode());
+		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
+		result = prime * result + ((salaryID == null) ? 0 : salaryID.hashCode());
+		result = prime * result + ((toDate == null) ? 0 : toDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Salary other = (Salary) obj;
+		if (employee == null) {
+			if (other.employee != null)
+				return false;
+		} else if (!employee.equals(other.employee))
+			return false;
+		if (salary == null) {
+			if (other.salary != null)
+				return false;
+		} else if (!salary.equals(other.salary))
+			return false;
+		if (salaryID == null) {
+			if (other.salaryID != null)
+				return false;
+		} else if (!salaryID.equals(other.salaryID))
+			return false;
+		if (toDate == null) {
+			if (other.toDate != null)
+				return false;
+		} else if (!toDate.equals(other.toDate))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Salary [salaryID=" + salaryID + ", salary=" + salary + ", toDate=" + toDate + "]";
 	}

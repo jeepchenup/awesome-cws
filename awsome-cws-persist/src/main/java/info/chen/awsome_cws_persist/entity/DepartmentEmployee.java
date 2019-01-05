@@ -82,6 +82,55 @@ public class DepartmentEmployee implements Serializable{
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((deID == null) ? 0 : deID.hashCode());
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + ((employee == null) ? 0 : employee.hashCode());
+		result = prime * result + ((fromDate == null) ? 0 : fromDate.hashCode());
+		result = prime * result + ((toDate == null) ? 0 : toDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DepartmentEmployee other = (DepartmentEmployee) obj;
+		if (deID == null) {
+			if (other.deID != null)
+				return false;
+		} else if (!deID.equals(other.deID))
+			return false;
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
+			return false;
+		if (employee == null) {
+			if (other.employee != null)
+				return false;
+		} else if (!employee.equals(other.employee))
+			return false;
+		if (fromDate == null) {
+			if (other.fromDate != null)
+				return false;
+		} else if (!fromDate.equals(other.fromDate))
+			return false;
+		if (toDate == null) {
+			if (other.toDate != null)
+				return false;
+		} else if (!toDate.equals(other.toDate))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {

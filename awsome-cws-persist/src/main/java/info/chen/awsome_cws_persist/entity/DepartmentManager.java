@@ -60,6 +60,55 @@ public class DepartmentManager implements Serializable {
 	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + ((dmID == null) ? 0 : dmID.hashCode());
+		result = prime * result + ((fromDate == null) ? 0 : fromDate.hashCode());
+		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
+		result = prime * result + ((toDate == null) ? 0 : toDate.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DepartmentManager other = (DepartmentManager) obj;
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
+			return false;
+		if (dmID == null) {
+			if (other.dmID != null)
+				return false;
+		} else if (!dmID.equals(other.dmID))
+			return false;
+		if (fromDate == null) {
+			if (other.fromDate != null)
+				return false;
+		} else if (!fromDate.equals(other.fromDate))
+			return false;
+		if (manager == null) {
+			if (other.manager != null)
+				return false;
+		} else if (!manager.equals(other.manager))
+			return false;
+		if (toDate == null) {
+			if (other.toDate != null)
+				return false;
+		} else if (!toDate.equals(other.toDate))
+			return false;
+		return true;
+	}
 	@Override
 	public String toString() {
 		return "DepartmentManager [dmID=" + dmID + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";
