@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 
 import info.chen.awsome_cws_persist.entity.composite_id.TitleID;
@@ -21,6 +23,8 @@ import info.chen.awsome_cws_persist.entity.composite_id.TitleID;
 
 @Entity
 @Table(name="title")
+@DynamicInsert
+@DynamicUpdate
 public class Title implements Serializable{
 
 	private static final long serialVersionUID = 1535405469691564931L;

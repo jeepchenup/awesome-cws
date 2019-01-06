@@ -14,12 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 
 import info.chen.awsome_cws_persist.entity.composite_id.SalaryID;
 
 @Entity
 @Table(name="salary", schema="awsome_cws")
+@DynamicInsert
+@DynamicUpdate
 public class Salary implements Serializable{
 	
 	private static final long serialVersionUID = 7443594059888295812L;
