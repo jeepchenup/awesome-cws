@@ -40,7 +40,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
+	public void deleteDepartmentByID(String deptNo) {
+		Department department = departmentDao.getDepartmentById(deptNo);
 		departmentDao.deleteDepartment(department);
 	}
 

@@ -16,7 +16,7 @@ public interface DepartmentService {
 
 	void updateDepartment(Department department);
 
-	void deleteDepartment(Department department);
+	void deleteDepartmentByID(String deptNo);
 
 	Set<Employee> getEmployeesByDepartmentID(String deptNo);
 
