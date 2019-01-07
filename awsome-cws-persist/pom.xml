@@ -5,14 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>info.chen</groupId>
+		<groupId>info.chen.awsome.cws</groupId>
 		<artifactId>awsome-cws</artifactId>
 		<version>2019.01-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>info.chen</groupId>
 	<artifactId>awsome-cws-persist</artifactId>
-	<version>2019.01-SNAPSHOT</version>
 	<name>awsome-cws-persist</name>
 	
 	<properties>
