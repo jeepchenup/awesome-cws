@@ -2,6 +2,8 @@ package info.chen.awsome_cws_web.exception;
 
 public class EmployeeException extends Exception {
 
+	private static final long serialVersionUID = 2816346302327454800L;
+
 	public EmployeeException() {
 		super();
 	}

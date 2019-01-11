@@ -28,7 +28,6 @@
 			<version>${spring-version}</version>
 		</dependency>
 		
-		
 		<!-- for spring to test bean -->
 		<dependency>
 			<groupId>org.springframework</groupId>

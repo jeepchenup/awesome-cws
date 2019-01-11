@@ -7,6 +7,9 @@
         <dependent-module archiveName="awsome-cws-service-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-service/awsome-cws-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="awsome-cws-persist-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-persist/awsome-cws-persist">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="awsome-cws"/>
         <property name="java-output-path" value="/awsome-cws-web/target/classes"/>
     </wb-module>

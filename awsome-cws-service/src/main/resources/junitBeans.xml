@@ -13,7 +13,7 @@
 		base-package="info.chen.awsome_cws_persist.dao, info.chen.awsome_cws_service.service" />
 
 	<context:property-placeholder
-		location="classpath:hibernate.properties" />
+		location="classpath:hibernate-for-junit-test.properties" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
