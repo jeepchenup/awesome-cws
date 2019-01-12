@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="awsome-cws">
+    <wb-module deploy-name="${finalName}">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
@@ -10,7 +10,7 @@
         <dependent-module archiveName="awsome-cws-persist-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-persist/awsome-cws-persist">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="context-root" value="awsome-cws"/>
         <property name="java-output-path" value="/awsome-cws-web/target/classes"/>
+        <property name="context-root" value="${finalName}"/>
     </wb-module>
 </project-modules>
