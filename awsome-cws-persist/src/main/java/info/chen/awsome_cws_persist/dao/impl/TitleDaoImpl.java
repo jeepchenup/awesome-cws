@@ -3,8 +3,9 @@ package info.chen.awsome_cws_persist.dao.impl;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome_cws_persist.dao.AbstractDao;
 import info.chen.awsome_cws_persist.dao.TitleDao;
@@ -12,13 +13,18 @@ import info.chen.awsome_cws_persist.entity.Title;
 
 @Repository("titleDao")
 public class TitleDaoImpl extends AbstractDao<Title> implements TitleDao {
+	
+	private static Logger LOGGER = LoggerFactory.getLogger(TitleDaoImpl.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Title> getTitlesByEmployeeID(Integer id) {
+		List<Title> titles = null;
 		Query query = getQuery("FROM Title WHERE emp_no=:empNO");
 		query.setInteger("empNO", id);
-		return query.list();
+		titles = query.list();
+		LOGGER.info("DAO -> Get {} employee's titles: {}", id, titles);
+		return titles;
 	}
 
 }

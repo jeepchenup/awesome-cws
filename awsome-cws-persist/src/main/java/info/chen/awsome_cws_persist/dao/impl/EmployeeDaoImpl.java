@@ -31,25 +31,33 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> getAllEmployees(Integer limitNum) {
+		
+		List<Employee> employees = null;
 		Criteria critria = getCriteria();
 		if(limitNum != 0) {
 			critria.setMaxResults(limitNum);
 		}
-		return critria.list();
+		employees = critria.list();
+		
+		LOGGER.info("DAO -> Get All Employees, total size is {}", employees.size());
+		return employees;
 	}
 
 	@Override
 	public void addEmployee(Employee employee) {
+		LOGGER.info("DAO -> Add Employee: {}", employee);
 		persistEntity(employee);
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
+		LOGGER.info("DAO -> Update Employee : {}", employee);
 		updateEntity(employee);
 	}
 
 	@Override
 	public void deleteEmployee(Employee employee) {
+		LOGGER.info("DAO -> Delete Employee : {}", employee);
 		deleteEntity(employee);
 	}
 
@@ -62,6 +70,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 		while(iterator.hasNext()) {
 			departments.add(iterator.next().getDepartment());
 		}
+		LOGGER.info("DAO -> {} employee works for [{}]", id, departments);
 		return departments;
 	}
 	
