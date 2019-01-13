@@ -11,7 +11,6 @@ import info.chen.awsome_cws_persist.dao.SalaryDao;
 import info.chen.awsome_cws_persist.entity.Salary;
 
 @Repository("salaryDao")
-@Transactional
 public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 
 	@SuppressWarnings("unchecked")

@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,7 +54,7 @@ public class Employee implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
 	
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
 	private Set<DepartmentEmployee> departmentEmployees = new HashSet<DepartmentEmployee>();
 	
 	public Integer getId() {

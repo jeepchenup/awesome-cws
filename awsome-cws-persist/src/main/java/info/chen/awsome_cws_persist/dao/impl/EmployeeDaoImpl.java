@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome_cws_persist.dao.AbstractDao;
 import info.chen.awsome_cws_persist.dao.EmployeeDao;
@@ -16,11 +17,13 @@ import info.chen.awsome_cws_persist.entity.DepartmentEmployee;
 import info.chen.awsome_cws_persist.entity.Employee;
 
 @Repository("employeeDao")
-@Transactional
 public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
+	
+	private static Logger LOGGER = LoggerFactory.getLogger(EmployeeDaoImpl.class);
 	
 	@Override
 	public Employee getEmployeeByEmpID(Integer id) {
+		LOGGER.info("Query employee {}", id);
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
 	}

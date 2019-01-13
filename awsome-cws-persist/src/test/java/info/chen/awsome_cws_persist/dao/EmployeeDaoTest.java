@@ -1,5 +1,6 @@
 package info.chen.awsome_cws_persist.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
@@ -10,13 +11,16 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome_cws_persist.entity.Department;
 import info.chen.awsome_cws_persist.entity.Employee;
 import info.chen.awsome_cws_persist.entity.Gender;
+import info.chen.awsome_cws_persist.util.CommonUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:junitBeans.xml"})
+@Transactional
 public class EmployeeDaoTest {
 
 	@Autowired
@@ -30,7 +34,13 @@ public class EmployeeDaoTest {
 	@Test
 	public void testGetEmployeeByEmpID() {
 		Employee employee = employeeDao.getEmployeeByEmpID(10001);
-		System.out.println(employee);
+
+		assertNotNull(employee);
+		assertEquals("Georgi", employee.getFirstName());
+		assertEquals("Facello", employee.getLastName());
+		assertEquals(Gender.M, employee.getGender());
+		assertEquals(CommonUtils.getDate("1953-09-02"), employee.getBirthDate());
+		assertEquals(CommonUtils.getDate("1986-06-26"), employee.getHireDate());
 	}
 	
 	@Test

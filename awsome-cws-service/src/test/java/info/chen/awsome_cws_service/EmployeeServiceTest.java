@@ -22,17 +22,7 @@ import info.chen.awsome_cws_service.service.EmployeeService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:junitBeans.xml")
 public class EmployeeServiceTest {
-	/*Employee getEmployeeByEmpID(Integer id);
 
-	List<Employee> getAllEmployees(Integer limitNum);
-
-	void addEmployee(Employee employee);
-
-	void updateEmployee(Employee employee);
-
-	void deleteEmployee(Employee employee);
-
-	Set<Department> getDepartmentsByEmployeeID(Integer id);*/
 	@Autowired
 	private EmployeeService employeeService;
 	

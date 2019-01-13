@@ -11,7 +11,6 @@ import info.chen.awsome_cws_persist.dao.TitleDao;
 import info.chen.awsome_cws_persist.entity.Title;
 
 @Repository("titleDao")
-@Transactional
 public class TitleDaoImpl extends AbstractDao<Title> implements TitleDao {
 
 	@SuppressWarnings("unchecked")

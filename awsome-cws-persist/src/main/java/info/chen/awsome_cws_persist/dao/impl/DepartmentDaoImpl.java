@@ -18,7 +18,6 @@ import info.chen.awsome_cws_persist.entity.DepartmentEmployee;
 import info.chen.awsome_cws_persist.entity.Employee;
 
 @Repository("departmentDao")
-@Transactional
 public class DepartmentDaoImpl extends AbstractDao<Department> implements DepartmentDao {
 
 	@SuppressWarnings("unchecked")

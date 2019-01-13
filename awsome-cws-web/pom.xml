@@ -12,12 +12,11 @@
 
 	<artifactId>awsome-cws-web</artifactId>
 	<packaging>war</packaging>
-	<name>awsome-cws-web</name>
+	<name>awsome-cws</name>
 
 	<properties>
 		<spring.version>4.2.5.RELEASE</spring.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
-		<mysql.connector.version>5.1.31</mysql.connector.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson.version>2.9.8</jackson.version>
 	</properties>
@@ -110,7 +109,7 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>${finalName}</warName>
+						<warName>awsome-cws</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
