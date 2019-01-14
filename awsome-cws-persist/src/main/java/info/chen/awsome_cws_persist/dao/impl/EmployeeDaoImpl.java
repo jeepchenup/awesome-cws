@@ -23,7 +23,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	
 	@Override
 	public Employee getEmployeeByEmpID(Integer id) {
-		LOGGER.info("Query employee {}", id);
+		LOGGER.info("DAO -> Query employee {}", id);
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
 	}
