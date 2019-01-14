@@ -10,6 +10,7 @@
 	<name>awsome-cws-root</name>
 
 	<modules>
+		<module>awsome-cws-common</module>
 		<module>awsome-cws-persist</module>
 		<module>awsome-cws-service</module>
 		<module>awsome-cws-web</module>

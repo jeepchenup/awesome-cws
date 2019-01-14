@@ -1,0 +1,8 @@
+[INFO ] 2019-01-14 21:37:58 method:[ info.chen.awsome.cws.persist.dao.impl.EmployeeDaoImpl.getEmployeeByEmpID(EmployeeDaoImpl.java:26)]
+DAO -> Query employee 10001
+[INFO ] 2019-01-14 21:38:38 method:[ info.chen.awsome.cws.persist.dao.impl.EmployeeDaoImpl.getEmployeeByEmpID(EmployeeDaoImpl.java:26)]
+DAO -> Query employee 10001
+[INFO ] 2019-01-14 21:39:07 method:[ info.chen.awsome.cws.persist.dao.impl.EmployeeDaoImpl.getEmployeeByEmpID(EmployeeDaoImpl.java:26)]
+DAO -> Query employee 10001
+[INFO ] 2019-01-14 22:19:07 method:[ info.chen.awsome.cws.persist.dao.impl.EmployeeDaoImpl.getEmployeeByEmpID(EmployeeDaoImpl.java:26)]
+DAO -> Query employee 10001

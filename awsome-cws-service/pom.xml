@@ -21,6 +21,13 @@
 
 	<dependencies>
 
+		<!-- awsome-cws-common -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- awsome-cws-persist -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>

@@ -23,6 +23,13 @@
 
 	<dependencies>
 
+		<!-- awsome-cws-common -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>awsome-cws-service</artifactId>

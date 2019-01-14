@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan
-		base-package="info.chen.awsome_cws_persist.dao, info.chen.awsome_cws_service.service" />
+		base-package="info.chen.awsome.cws.persist, info.chen.awsome.cws.service" />
 
 	<context:property-placeholder
 		location="classpath:hibernate-for-junit-test.properties" />
@@ -28,7 +28,7 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan"
-			value="info.chen.awsome_cws_persist.entity" />
+			value="info.chen.awsome.cws.persist.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

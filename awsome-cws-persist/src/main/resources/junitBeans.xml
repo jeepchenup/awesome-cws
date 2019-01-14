@@ -11,7 +11,7 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	<context:component-scan base-package="info.chen.awsome_cws_persist.dao" />
+	<context:component-scan base-package="info.chen.awsome.cws.persist.dao" />
 
 	<context:property-placeholder location="classpath:hibernate.properties" />
 
@@ -28,7 +28,7 @@
 			   class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan"
-						 value="info.chen.awsome_cws_persist.entity" />
+						 value="info.chen.awsome.cws.persist.entity" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

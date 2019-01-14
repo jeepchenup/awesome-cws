@@ -23,12 +23,12 @@
         <property name="hbm2ddl.import_files">./sql/init.sql</property>
         <property name="connection.isolation">2</property>
         
-        <mapping class="info.chen.awsome_cws_persist.entity.Department"/>
-        <mapping class="info.chen.awsome_cws_persist.entity.DepartmentEmployee"/>
-        <mapping class="info.chen.awsome_cws_persist.entity.DepartmentManager"/>
-        <mapping class="info.chen.awsome_cws_persist.entity.Employee"/>
-        <mapping class="info.chen.awsome_cws_persist.entity.Salary"/>
-        <mapping class="info.chen.awsome_cws_persist.entity.Title"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.Department"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.DepartmentEmployee"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.DepartmentManager"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.Employee"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.Salary"/>
+        <mapping class="info.chen.awsome.cws.persist.entity.Title"/>
 	</session-factory>
 
 </hibernate-configuration>
