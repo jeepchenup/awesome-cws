@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"info.chen.awsome_cws*"})
+@ComponentScan(basePackages = {"info.chen.awsome.cws*"})
 public class WebAppConfiguration extends WebMvcConfigurerAdapter{
 
 	/**

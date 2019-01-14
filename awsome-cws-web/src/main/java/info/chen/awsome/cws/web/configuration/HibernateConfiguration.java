@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value= {"classpath:hibernate.properties"})
-@ComponentScan(basePackages = "info.chen.awsome_cws_web.configuration")
+@ComponentScan(basePackages = "info.chen.awsome.cws.web.configuration")
 public class HibernateConfiguration {
 
 	@Autowired
