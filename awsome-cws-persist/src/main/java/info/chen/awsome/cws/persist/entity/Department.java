@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -47,6 +48,7 @@ public class Department implements Serializable {
 		this.name = name;
 	}
 
+	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
 	public Set<DepartmentEmployee> getDeptEmpSet() {
 		return deptEmpSet;
 	}

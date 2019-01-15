@@ -6,6 +6,7 @@ import java.util.Set;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,52 +19,67 @@ import junit.framework.TestCase;
 @ContextConfiguration(locations = "classpath:junitBeans.xml")
 @Transactional
 public class DepartmentDaoTest extends TestCase {
-	
+
 	@Autowired
 	private DepartmentDao departmentDao;
-	
+
 	@Test
 	public void testDepartmentDaoNotNull() {
 		assertNotNull(departmentDao);
 	}
-	
+
 	@Test
 	public void testGetDepartmentById() {
-		Department department1 = departmentDao.getDepartmentById("d001");
-		Department department2 = departmentDao.getDepartmentById("d001");
-		System.out.println(department1.equals(department2));
+		Department department = departmentDao.getDepartmentById("d001");
+
+		assertEquals("d001", department.getId());
+		assertEquals("Marketing", department.getName());
 	}
-	
+
 	@Test
 	public void testGetAllDepartment() {
 		List<Department> departments = departmentDao.getAllDepartment();
-		for(Department department : departments) {
-			System.out.println(department);
-		}
+		assertEquals(9, departments.size());
 	}
-	
+
 	@Test
+	@Rollback(false)// test finished and do not rollback data
 	public void testAddDepartment() {
 		Department department = new Department();
 		department.setId("d010");
 		department.setName("IT");
 		departmentDao.addDepartment(department);
+		
+		department = departmentDao.getDepartmentById("d010");
+		assertEquals("d010", department.getId());
+		assertEquals("IT", department.getName());
 	}
-	
+
 	@Test
+	@Rollback(false)
 	public void testUpdateDepartment() {
 		Department department = departmentDao.getDepartmentById("d010");
+		assertEquals("IT", department.getName());
+		
 		department.setName("Information Technology");
 		departmentDao.updateDepartment(department);
+		
+		department = departmentDao.getDepartmentById("d010");
+		assertEquals("Information Technology", department.getName());
 	}
-	
+
 	@Test
+	@Rollback(false)
 	public void testDeleteDepartment() {
-		Department department = new Department();
-		department.setId("d010");
+		Department department = departmentDao.getDepartmentById("d010");
+		assertNotNull(department);
+		
 		departmentDao.deleteDepartment(department);
+		
+		department = departmentDao.getDepartmentById("d010");
+		assertNull(department);
 	}
-	
+
 	@Test
 	public void testGetEmployeesByDepartmentID() {
 		String departmentID = "d001";
@@ -71,5 +87,5 @@ public class DepartmentDaoTest extends TestCase {
 		Set<Employee> employees = departmentDao.getEmployeesByDepartmentID(departmentID);
 		System.out.println(department.getName() + " has " + employees.size() + " employees");
 	}
-	
+
 }

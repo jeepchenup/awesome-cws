@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value= {"classpath:hibernate.properties"})
-@ComponentScan(basePackages = "info.chen.awsome.cws.web.configuration")
 public class HibernateConfiguration {
 
 	@Autowired
@@ -31,7 +29,7 @@ public class HibernateConfiguration {
 		// 设置数据源
 		localSessionFactoryBean.setDataSource(getDataSource());
 		// 指定持久类路径
-		localSessionFactoryBean.setPackagesToScan(new String[] {"info.chen.awsome_cws_persist.entity"});
+		localSessionFactoryBean.setPackagesToScan(new String[] {"info.chen.awsome.cws.persist.entity"});
 		// 指定 Hibernate 配置
 		localSessionFactoryBean.setHibernateProperties(getHibernateProperties());
 		

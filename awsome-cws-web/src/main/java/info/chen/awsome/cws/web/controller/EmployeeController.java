@@ -22,7 +22,7 @@ public class EmployeeController {
 	public Employee getEmployee(@PathVariable("empNo") Integer empNo) {
 		Employee employee = new Employee();
 		employee = employeeService.getEmployeeByEmpID(empNo);
-//		employee.setDepartmentEmployees(null);
+		employee.setDepartmentEmployees(null);
 		System.out.println(employee);
 		return employee;
 	}

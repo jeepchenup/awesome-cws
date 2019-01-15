@@ -58,10 +58,10 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	@Override
 	public Set<Employee> getEmployeesByDepartmentID(String deptNo) {
 		
-		Set<Employee> employees = new HashSet<Employee>();
-		
 		Department department = getDepartmentById(deptNo);
+		
 		Set<DepartmentEmployee> deptEmpSet = department.getDeptEmpSet();
+		Set<Employee> employees = new HashSet<Employee>();
 		Iterator<DepartmentEmployee> iterator = deptEmpSet.iterator();
 		while(iterator.hasNext()) {
 			employees.add(iterator.next().getEmployee());

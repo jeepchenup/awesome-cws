@@ -6,11 +6,13 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		// load other beans just like datasource, sessionFactory
+		return new Class[] { HibernateConfiguration.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
+		// load web component beans
 		return new Class[] { WebAppConfiguration.class };
 	}
 
