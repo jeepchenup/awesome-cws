@@ -15,6 +15,7 @@ import info.chen.awsome.cws.persist.dao.EmployeeDao;
 import info.chen.awsome.cws.persist.entity.Department;
 import info.chen.awsome.cws.persist.entity.DepartmentEmployee;
 import info.chen.awsome.cws.persist.entity.Employee;
+import info.chen.awsome.cws.persist.exception.EmployeeException;
 
 @Repository("employeeDao")
 public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
@@ -22,7 +23,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	private static Logger LOGGER = LoggerFactory.getLogger(EmployeeDaoImpl.class);
 	
 	@Override
-	public Employee getEmployeeByEmpID(Integer id) {
+	public Employee getEmployeeByEmpID(Integer id) throws EmployeeException{
 		LOGGER.info("DAO -> Query employee {}", id);
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
@@ -30,7 +31,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> getAllEmployees(Integer limitNum) {
+	public List<Employee> getAllEmployees(Integer limitNum) throws EmployeeException{
 		
 		List<Employee> employees = null;
 		Criteria critria = getCriteria();
@@ -44,25 +45,25 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	}
 
 	@Override
-	public void addEmployee(Employee employee) {
+	public void addEmployee(Employee employee) throws EmployeeException{
 		LOGGER.info("DAO -> Add Employee: {}", employee);
 		persistEntity(employee);
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
+	public void updateEmployee(Employee employee) throws EmployeeException{
 		LOGGER.info("DAO -> Update Employee : {}", employee);
 		updateEntity(employee);
 	}
 
 	@Override
-	public void deleteEmployee(Employee employee) {
+	public void deleteEmployee(Employee employee) throws EmployeeException{
 		LOGGER.info("DAO -> Delete Employee : {}", employee);
 		deleteEntity(employee);
 	}
 
 	@Override
-	public Set<Department> getDepartmentsByEmployeeID(Integer id) {
+	public Set<Department> getDepartmentsByEmployeeID(Integer id) throws EmployeeException{
 		Employee employee = getEmployeeByEmpID(id);
 		Set<DepartmentEmployee> deSet = employee.getDepartmentEmployees();
 		Set<Department> departments = new HashSet<Department>();

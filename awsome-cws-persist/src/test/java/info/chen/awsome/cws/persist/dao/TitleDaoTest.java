@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome.cws.persist.entity.Title;
+import info.chen.awsome.cws.persist.exception.TitleException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:junitBeans.xml"})
@@ -27,7 +28,7 @@ public class TitleDaoTest {
 	}
 	
 	@Test
-	public void testGetTitlesByEmployeeID() {
+	public void testGetTitlesByEmployeeID() throws TitleException {
 		List<Title> titles = titleDao.getTitlesByEmployeeID(10002);
 		for(Title title : titles) {
 			System.out.println(title);

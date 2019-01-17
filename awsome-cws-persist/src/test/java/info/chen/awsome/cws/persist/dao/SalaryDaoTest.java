@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome.cws.persist.entity.Salary;
+import info.chen.awsome.cws.persist.exception.SalaryException;
 import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +27,7 @@ public class SalaryDaoTest extends TestCase{
 	}
 	
 	@Test
-	public void testGetSalariesByEmployeeID() {
+	public void testGetSalariesByEmployeeID() throws SalaryException {
 		List<Salary> salaries = salaryDao.getSalariesByEmployeeID(10001);
 		for(Salary salary : salaries) {
 			System.out.println(salary);

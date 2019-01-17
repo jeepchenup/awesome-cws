@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import info.chen.awsome.cws.persist.dao.AbstractDao;
 import info.chen.awsome.cws.persist.dao.SalaryDao;
 import info.chen.awsome.cws.persist.entity.Salary;
+import info.chen.awsome.cws.persist.exception.SalaryException;
 
 @Repository("salaryDao")
 public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
@@ -18,7 +19,7 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Salary> getSalariesByEmployeeID(Integer id) {
+	public List<Salary> getSalariesByEmployeeID(Integer id) throws SalaryException{
 		LOGGER.info("DAO -> Get employee: {}'s salaries", id);
 		Query query = getQuery("FROM Salary WHERE emp_no=:emp_no");
 		query.setInteger("emp_no", id);

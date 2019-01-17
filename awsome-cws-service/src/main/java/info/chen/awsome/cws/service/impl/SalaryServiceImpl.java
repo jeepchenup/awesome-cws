@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome.cws.persist.dao.SalaryDao;
 import info.chen.awsome.cws.persist.entity.Salary;
+import info.chen.awsome.cws.persist.exception.SalaryException;
 import info.chen.awsome.cws.service.SalaryService;
 
 @Service
@@ -18,7 +19,7 @@ public class SalaryServiceImpl implements SalaryService {
 	private SalaryDao salaryDao;
 	
 	@Override
-	public List<Salary> getSalariesByEmployeeID(Integer id) {
+	public List<Salary> getSalariesByEmployeeID(Integer id) throws SalaryException {
 		return salaryDao.getSalariesByEmployeeID(id);
 	}
 

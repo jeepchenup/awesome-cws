@@ -16,6 +16,7 @@ import info.chen.awsome.cws.persist.dao.DepartmentDao;
 import info.chen.awsome.cws.persist.entity.Department;
 import info.chen.awsome.cws.persist.entity.DepartmentEmployee;
 import info.chen.awsome.cws.persist.entity.Employee;
+import info.chen.awsome.cws.persist.exception.DepartmentException;
 
 @Repository("departmentDao")
 public class DepartmentDaoImpl extends AbstractDao<Department> implements DepartmentDao {
@@ -24,7 +25,7 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Department> getAllDepartment() {
+	public List<Department> getAllDepartment() throws DepartmentException{
 		LOGGER.info("DAO -> Get all departments");
 		Criteria ctiteria = getCriteria();
 		ctiteria.addOrder(Order.asc("id"));
@@ -32,31 +33,31 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	}
 
 	@Override
-	public void addDepartment(Department department) {
+	public void addDepartment(Department department) throws DepartmentException{
 		LOGGER.info("DAO -> Add new department : {}", department);
 		persistEntity(department);
 	}
 
 	@Override
-	public void updateDepartment(Department department) {
+	public void updateDepartment(Department department) throws DepartmentException{
 		LOGGER.info("DAO -> Update department : {}", department);
 		updateEntity(department);
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
+	public void deleteDepartment(Department department) throws DepartmentException{
 		LOGGER.info("DAO -> Delete department : {}", department);
 		deleteEntity(department);
 	}
 
 	@Override
-	public Department getDepartmentById(String id) {
+	public Department getDepartmentById(String id) throws DepartmentException{
 		LOGGER.info("DAO -> Query department By {}", id);
 		return (Department) getSession().get(Department.class, id);
 	}
 
 	@Override
-	public Set<Employee> getEmployeesByDepartmentID(String deptNo) {
+	public Set<Employee> getEmployeesByDepartmentID(String deptNo) throws DepartmentException{
 		
 		Department department = getDepartmentById(deptNo);
 		

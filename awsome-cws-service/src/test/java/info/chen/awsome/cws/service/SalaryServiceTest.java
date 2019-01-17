@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import info.chen.awsome.cws.persist.entity.Salary;
+import info.chen.awsome.cws.persist.exception.SalaryException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:junitBeans.xml"})
@@ -26,7 +27,7 @@ public class SalaryServiceTest {
 	}
 	
 	@Test
-	public void testGetSalariesByEmployeeID() {
+	public void testGetSalariesByEmployeeID() throws SalaryException {
 		List<Salary> salaries = salaryService.getSalariesByEmployeeID(10001);
 		assertEquals(17, salaries.size());
 	}

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import info.chen.awsome.cws.persist.entity.Employee;
+import info.chen.awsome.cws.persist.exception.EmployeeException;
 import info.chen.awsome.cws.service.EmployeeService;
 import info.chen.awsome.cws.web.controller.api.EmployeeRestURIConstants;
 
@@ -21,9 +22,11 @@ public class EmployeeController {
 	@ResponseBody
 	public Employee getEmployee(@PathVariable("empNo") Integer empNo) {
 		Employee employee = new Employee();
-		employee = employeeService.getEmployeeByEmpID(empNo);
-		employee.setDepartmentEmployees(null);
-		System.out.println(employee);
+		try {
+			employee = employeeService.getEmployeeByEmpID(empNo);
+			employee.setDepartmentEmployees(null);
+		} catch (EmployeeException e) {
+		}
 		return employee;
 	}
 }

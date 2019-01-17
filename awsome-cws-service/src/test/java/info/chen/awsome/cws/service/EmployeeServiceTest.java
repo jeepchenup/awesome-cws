@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import info.chen.awsome.cws.persist.entity.Department;
 import info.chen.awsome.cws.persist.entity.Employee;
 import info.chen.awsome.cws.persist.entity.Gender;
+import info.chen.awsome.cws.persist.exception.EmployeeException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:junitBeans.xml")
@@ -31,7 +32,7 @@ public class EmployeeServiceTest {
 	}
 	
 	@Test
-	public void testGetEmployeeByEmpID() {
+	public void testGetEmployeeByEmpID() throws EmployeeException {
 		Employee employee = employeeService.getEmployeeByEmpID(10001);
 		
 		assertNotNull(employee);
@@ -43,13 +44,13 @@ public class EmployeeServiceTest {
 	}
 	
 	@Test
-	public void testGetAllEmployees() {
+	public void testGetAllEmployees() throws EmployeeException {
 		List<Employee> employees = employeeService.getAllEmployees(0);
 		assertEquals(300024, employees.size());
 	}
 	
 	@Test
-	public void testAddEmployee() {
+	public void testAddEmployee() throws EmployeeException {
 		Employee employee = new Employee();
 		employee.setFirstName("Bob");
 		employee.setLastName("Smith");
@@ -71,7 +72,7 @@ public class EmployeeServiceTest {
 	}
 	
 	@Test
-	public void testUpdateEmployee() {
+	public void testUpdateEmployee() throws EmployeeException {
 		Employee employee = employeeService.getEmployeeByEmpID(500001);
 		
 		assertNotNull(employee);
@@ -85,7 +86,7 @@ public class EmployeeServiceTest {
 	}
 	
 	@Test 
-	public void testDeleteEmployee() {
+	public void testDeleteEmployee() throws EmployeeException {
 		Employee employee = employeeService.getEmployeeByEmpID(500001);
 		assertNotNull(employee);
 		
@@ -96,7 +97,7 @@ public class EmployeeServiceTest {
 	}
 	
 	@Test
-	public void testGetDepartmentsByEmployeeID() {
+	public void testGetDepartmentsByEmployeeID() throws EmployeeException {
 		Set<Department> departments = employeeService.getDepartmentsByEmployeeID(10010);
 		assertNotNull(departments);
 		assertEquals(2, departments.size());

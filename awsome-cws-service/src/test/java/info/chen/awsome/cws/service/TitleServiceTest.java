@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import info.chen.awsome.cws.persist.entity.Title;
+import info.chen.awsome.cws.persist.exception.TitleException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:junitBeans.xml"})
@@ -26,7 +27,7 @@ public class TitleServiceTest {
 	}
 	
 	@Test
-	public void testGetTitlesByEmployeeID() {
+	public void testGetTitlesByEmployeeID() throws TitleException {
 		List<Title> titles = titleService.getTitlesByEmployeeID(10001);
 		assertEquals(1, titles.size());
 	}

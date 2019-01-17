@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import info.chen.awsome.cws.persist.entity.Department;
+import info.chen.awsome.cws.persist.exception.DepartmentException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:junitBeans.xml")
@@ -27,7 +28,7 @@ public class DepartmentServiceTest {
 	}
 	
 	@Test
-	public void testGetDepartmentById() {
+	public void testGetDepartmentById() throws DepartmentException {
 		Department department = deptService.getDepartmentById("d001");
 		
 		assertEquals("d001", department.getId());
@@ -35,13 +36,13 @@ public class DepartmentServiceTest {
 	}
 	
 	@Test
-	public void testGetAllDepartment() {
+	public void testGetAllDepartment() throws DepartmentException {
 		List<Department> departments = deptService.getAllDepartment();
 		assertEquals(9, departments.size());
 	}
 	
 	@Test
-	public void testAddDepartment() {
+	public void testAddDepartment() throws DepartmentException {
 		Department department = new Department();
 		department.setId("d010");
 		department.setName("IT");
@@ -53,7 +54,7 @@ public class DepartmentServiceTest {
 	}
 	
 	@Test
-	public void testUpdateDepartment() {
+	public void testUpdateDepartment() throws DepartmentException {
 		Department department = deptService.getDepartmentById("d010");
 		assertEquals("IT", department.getName());
 		
@@ -65,7 +66,7 @@ public class DepartmentServiceTest {
 	}
 	
 	@Test
-	public void testDeleteDepartment() {
+	public void testDeleteDepartment() throws DepartmentException {
 		Department department = deptService.getDepartmentById("d010");
 		assertNotNull(department);
 		

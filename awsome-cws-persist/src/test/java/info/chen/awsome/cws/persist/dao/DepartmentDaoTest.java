@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import info.chen.awsome.cws.persist.entity.Department;
 import info.chen.awsome.cws.persist.entity.Employee;
+import info.chen.awsome.cws.persist.exception.DepartmentException;
 import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,7 +30,7 @@ public class DepartmentDaoTest extends TestCase {
 	}
 
 	@Test
-	public void testGetDepartmentById() {
+	public void testGetDepartmentById() throws DepartmentException {
 		Department department = departmentDao.getDepartmentById("d001");
 
 		assertEquals("d001", department.getId());
@@ -37,14 +38,14 @@ public class DepartmentDaoTest extends TestCase {
 	}
 
 	@Test
-	public void testGetAllDepartment() {
+	public void testGetAllDepartment() throws DepartmentException {
 		List<Department> departments = departmentDao.getAllDepartment();
 		assertEquals(9, departments.size());
 	}
 
 	@Test
 	@Rollback(false)// test finished and do not rollback data
-	public void testAddDepartment() {
+	public void testAddDepartment() throws DepartmentException {
 		Department department = new Department();
 		department.setId("d010");
 		department.setName("IT");
@@ -57,7 +58,7 @@ public class DepartmentDaoTest extends TestCase {
 
 	@Test
 	@Rollback(false)
-	public void testUpdateDepartment() {
+	public void testUpdateDepartment() throws DepartmentException {
 		Department department = departmentDao.getDepartmentById("d010");
 		assertEquals("IT", department.getName());
 		
@@ -70,7 +71,7 @@ public class DepartmentDaoTest extends TestCase {
 
 	@Test
 	@Rollback(false)
-	public void testDeleteDepartment() {
+	public void testDeleteDepartment() throws DepartmentException {
 		Department department = departmentDao.getDepartmentById("d010");
 		assertNotNull(department);
 		
@@ -81,7 +82,7 @@ public class DepartmentDaoTest extends TestCase {
 	}
 
 	@Test
-	public void testGetEmployeesByDepartmentID() {
+	public void testGetEmployeesByDepartmentID() throws DepartmentException {
 		String departmentID = "d001";
 		Department department = departmentDao.getDepartmentById(departmentID);
 		Set<Employee> employees = departmentDao.getEmployeesByDepartmentID(departmentID);
