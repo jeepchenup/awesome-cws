@@ -13,66 +13,43 @@
 	<artifactId>awsome-cws-persist</artifactId>
 	<name>awsome-cws-persist</name>
 
-	<properties>
-		<spring.version>4.2.5.RELEASE</spring.version>
-		<hibernate.version>4.3.11.Final</hibernate.version>
-		<mysql.connector.version>5.1.31</mysql.connector.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<dependencies>
-
+		<!-- awsome-cws-common -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>awsome-cws-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
+		<!-- spring web mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
-
+		<!-- spring orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
-
-		<!-- for spring to test bean -->
+		<!-- spring test-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
 		</dependency>
-
-		<!-- hibernate -->
+		<!-- hibernate core-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
 		</dependency>
-
-		<!-- <dependency> <groupId>javax.validation</groupId> <artifactId>validation-api</artifactId> 
-			<version>1.1.0.Final</version> </dependency> -->
-
 		<!-- mysql driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.version}</version>
 		</dependency>
-
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
