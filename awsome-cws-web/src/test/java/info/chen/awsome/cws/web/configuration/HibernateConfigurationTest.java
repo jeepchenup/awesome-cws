@@ -1,4 +1,4 @@
-package info.chen.awsome_cws_web.configuration;
+package info.chen.awsome.cws.web.configuration;
 
 import static org.junit.Assert.assertNotNull;
 
