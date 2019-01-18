@@ -6,12 +6,12 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class SystemArchitecture {
 
-	@Pointcut("execution(* info.chen.awsome.cws.persist.dao..*)")
+	@Pointcut("within(info.chen.awsome.cws.persist.dao..*)")
 	public void inDataAccessLayer() {}
 	
-	@Pointcut("execution(* info.chen.awsome.cws.service..*)")
+	@Pointcut("within(info.chen.awsome.cws.service..*)")
 	public void inServiceAccessLayer() {}
 	
-	@Pointcut("execution(* info.chen.awsome.cws.web.controller..*)")
+	@Pointcut("within(info.chen.awsome.cws.web.controller..*)")
 	public void inControllerAccessLayer() {}
 }
