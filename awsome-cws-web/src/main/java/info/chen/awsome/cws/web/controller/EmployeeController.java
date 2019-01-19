@@ -1,5 +1,10 @@
 package info.chen.awsome.cws.web.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,5 +33,22 @@ public class EmployeeController {
 		} catch (EmployeeException e) {
 		}
 		return employee;
+	}
+	
+	@RequestMapping(value = EmployeeRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, List<Employee>> getAllEmployee() {
+		
+		Map<String, List<Employee>> employeeMap = new HashMap<String, List<Employee>>();
+		List<Employee> employees = new ArrayList<Employee>();
+		
+		try {
+			employees = employeeService.getAllEmployees(0);
+			employeeMap.put("employees", employees);
+		} catch (EmployeeException e) {
+			e.printStackTrace();
+		}
+		
+		return employeeMap;
 	}
 }

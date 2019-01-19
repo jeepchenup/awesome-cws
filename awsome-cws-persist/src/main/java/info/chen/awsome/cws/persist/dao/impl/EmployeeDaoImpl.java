@@ -17,7 +17,7 @@ import info.chen.awsome.cws.persist.entity.DepartmentEmployee;
 import info.chen.awsome.cws.persist.entity.Employee;
 import info.chen.awsome.cws.persist.exception.EmployeeException;
 
-@Repository("employeeDao")
+@Repository
 public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(EmployeeDaoImpl.class);
