@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-import info.chen.awsome.cws.web.aop.EmployeeAdvice;
+import info.chen.awsome.cws.web.aop.DataLayerAdvice;
 import info.chen.awsome.cws.web.aop.SystemArchitecture;
 
 @Configuration
@@ -19,7 +19,7 @@ public class AOPConfiguration {
 	}
 	
 	@Bean
-	public EmployeeAdvice getEmployeeAdvice() {
-		return new EmployeeAdvice();
+	public DataLayerAdvice getDataLayerAdvice() {
+		return new DataLayerAdvice();
 	}
 }

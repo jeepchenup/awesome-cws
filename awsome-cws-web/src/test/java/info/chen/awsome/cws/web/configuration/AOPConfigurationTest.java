@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import info.chen.awsome.cws.persist.dao.EmployeeDao;
 import info.chen.awsome.cws.persist.entity.Employee;
 import info.chen.awsome.cws.persist.exception.EmployeeException;
-import info.chen.awsome.cws.web.aop.EmployeeAdvice;
+import info.chen.awsome.cws.web.aop.DataLayerAdvice;
 import info.chen.awsome.cws.web.aop.SystemArchitecture;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +28,7 @@ public class AOPConfigurationTest {
 	}
 	
 	@Autowired
-	private EmployeeAdvice employeeAdvice;
+	private DataLayerAdvice employeeAdvice;
 	@Test
 	public void testEmployeeAdviceNotNull() {
 		assertNotNull(employeeAdvice);

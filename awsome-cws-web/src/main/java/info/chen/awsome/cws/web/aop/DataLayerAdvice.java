@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 @Aspect
-public class EmployeeAdvice {
+public class DataLayerAdvice {
 	
-	private static Logger Logger = LoggerFactory.getLogger(EmployeeAdvice.class);
+	private static Logger Logger = LoggerFactory.getLogger(DataLayerAdvice.class);
 
 	@Around("info.chen.awsome.cws.web.aop.SystemArchitecture.inDataAccessLayer()")
 	public void calculateDataAccessTime(ProceedingJoinPoint point) {
@@ -19,7 +19,7 @@ public class EmployeeAdvice {
 			long elapsedTime = System.currentTimeMillis() - start;
 			Logger.info("takes {} milliseconds to retrive data", elapsedTime);
 		} catch (Throwable e) {
-			Logger.error("retrice data failed");
+			Logger.error("retrieve data failed");
 		}
 	}
 }
