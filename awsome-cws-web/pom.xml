@@ -12,7 +12,7 @@
 
 	<artifactId>awsome-cws-web</artifactId>
 	<packaging>war</packaging>
-	<name>awsome-cws</name>
+	<name>awsome-cws-web</name>
 
 	<dependencies>
 		<!-- awsome-cws-common -->
@@ -83,7 +83,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>awsome-cws</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -103,7 +102,7 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>awsome-cws</warName>
+						<warName>awsome-cws-web</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
