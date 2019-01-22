@@ -29,7 +29,6 @@ public class EmployeeController {
 		Employee employee = new Employee();
 		try {
 			employee = employeeService.getEmployeeByEmpID(empNo);
-			employee.setDepartmentEmployees(null);
 		} catch (EmployeeException e) {
 		}
 		return employee;

@@ -21,6 +21,8 @@ import org.awsome.cws.common.DateUtils;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="employee")
 @DynamicUpdate
@@ -52,6 +54,7 @@ public class Employee implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
 	private Set<DepartmentEmployee> departmentEmployees = new HashSet<DepartmentEmployee>();
 	
