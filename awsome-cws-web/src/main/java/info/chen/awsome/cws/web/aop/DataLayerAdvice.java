@@ -17,7 +17,7 @@ public class DataLayerAdvice {
 			long start = System.currentTimeMillis();
 			Object obj = point.proceed();
 			long elapsedTime = System.currentTimeMillis() - start;
-			Logger.info("takes {} milliseconds to retrive data", elapsedTime);
+			Logger.info("retrive data time : {} milliseconds.", elapsedTime);
 			return obj;
 		} catch (Throwable e) {
 			Logger.error("retrieve data failed");
