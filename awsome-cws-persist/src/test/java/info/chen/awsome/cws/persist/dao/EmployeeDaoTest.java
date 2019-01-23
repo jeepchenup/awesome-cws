@@ -7,7 +7,7 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 import java.util.Set;
 
-import org.awsome.cws.common.DateUtils;
+import org.awsome.cws.common.utils.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

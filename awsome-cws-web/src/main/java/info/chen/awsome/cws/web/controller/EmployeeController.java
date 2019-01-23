@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import info.chen.awsome.cws.persist.entity.Employee;
@@ -29,6 +30,7 @@ public class EmployeeController {
 		Employee employee = new Employee();
 		try {
 			employee = employeeService.getEmployeeByEmpID(empNo);
+			System.out.println(employee.getBirthDate());
 		} catch (EmployeeException e) {
 		}
 		return employee;
@@ -49,5 +51,16 @@ public class EmployeeController {
 		}
 		
 		return employeeMap;
+	}
+	
+	@RequestMapping(value = EmployeeRestURIConstants.CREATE_EMP, method = RequestMethod.POST)
+	public String createEmployee(@RequestParam Employee employee) {
+		System.out.println(employee);
+		try {
+			employeeService.addEmployee(employee);
+		} catch(EmployeeException e) {
+			
+		}
+		return null;
 	}
 }
