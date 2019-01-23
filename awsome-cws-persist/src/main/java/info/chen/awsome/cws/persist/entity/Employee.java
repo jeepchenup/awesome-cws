@@ -17,10 +17,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.awsome.cws.common.DateUtils;
+import org.awsome.cws.common.constants.DateConstants;
+import org.awsome.cws.common.utils.DateUtils;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -46,10 +48,12 @@ public class Employee implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateConstants.YYYY_MM_DD_PATTERN)
 	@Column(name = "birth_date")
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateConstants.YYYY_MM_DD_PATTERN)
 	@Column(name = "hire_date")
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
