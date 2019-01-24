@@ -22,53 +22,57 @@ import info.chen.awsome.cws.web.exception.NoSuchEmployeeException;
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 	// 400
-	@ExceptionHandler({ ConstraintViolationException.class })
-	public ResponseEntity<Object> handleBadRequest(final ConstraintViolationException ex, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
-		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-	}
-
-	@ExceptionHandler({ DataIntegrityViolationException.class })
-	public ResponseEntity<Object> handleBadRequest(final DataIntegrityViolationException ex, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
-		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-	}
-
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(final HttpMessageNotReadableException ex,
 			final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
-		// ex.getCause() instanceof JsonMappingException, JsonParseException // for
-		// additional information later on
+		logger.error("Http Message Not Readable.", ex);
+		final String bodyOfResponse = "Http Message Not Readable.";
 		return handleExceptionInternal(ex, bodyOfResponse, headers, HttpStatus.BAD_REQUEST, request);
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex,
 			final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
+		logger.error("Handle Method Argument Not Valid.", ex);
+		final String bodyOfResponse = "Handle Method Argument Not Valid.";
 		return handleExceptionInternal(ex, bodyOfResponse, headers, HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler({ ConstraintViolationException.class })
+	public ResponseEntity<Object> handleBadRequest(final ConstraintViolationException ex, final WebRequest request) {
+		logger.error("Entity Constraint Violation.", ex);
+		final String bodyOfResponse = "Entity Constraint Violation.";
+		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
+
+	@ExceptionHandler({ DataIntegrityViolationException.class })
+	public ResponseEntity<Object> handleBadRequest(final DataIntegrityViolationException ex, final WebRequest request) {
+		logger.error("Data Integrity Violation.", ex);
+		final String bodyOfResponse = "Data Integrity Violation.";
+		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 
 	// 404
 	@ExceptionHandler(value = { EntityNotFoundException.class, NoSuchEmployeeException.class })
 	protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
+		logger.error("Entity Not Found.", ex);
+		final String bodyOfResponse = "Entity Not Found.";
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 
 	// 409
 	@ExceptionHandler({ InvalidDataAccessApiUsageException.class, DataAccessException.class })
 	protected ResponseEntity<Object> handleConflict(final RuntimeException ex, final WebRequest request) {
-		final String bodyOfResponse = "This should be application specific";
+		logger.error("Request Conflict.", ex);
+		final String bodyOfResponse = "Request Conflict.";
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
 	}
 
 	// 500
 	@ExceptionHandler({ NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class })
 	public ResponseEntity<Object> handleInternal(final RuntimeException ex, final WebRequest request) {
-		logger.error("500 Status Code", ex);
-		final String bodyOfResponse = "This should be application specific";
+		logger.error("Service Internal Error.", ex);
+		final String bodyOfResponse = "Service Internal Error.";
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
 				request);
 	}
