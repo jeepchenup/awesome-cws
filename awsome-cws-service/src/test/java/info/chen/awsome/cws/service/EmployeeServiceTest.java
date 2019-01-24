@@ -90,7 +90,7 @@ public class EmployeeServiceTest {
 		Employee employee = employeeService.getEmployeeByEmpID(500001);
 		assertNotNull(employee);
 		
-		employeeService.deleteEmployee(employee);
+		employeeService.deleteEmployee(500001);
 		
 		Employee deletedEmployee = employeeService.getEmployeeByEmpID(500001);
 		assertNull(deletedEmployee);

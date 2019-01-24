@@ -41,7 +41,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void deleteEmployee(Employee employee) throws EmployeeException {
+	public void deleteEmployee(Integer id) throws EmployeeException {
+		Employee employee = employeeDao.getEmployeeByEmpID(id);
+		if(employee == null) 
+			throw new EmployeeException();
 		employeeDao.deleteEmployee(employee);
 	}
 

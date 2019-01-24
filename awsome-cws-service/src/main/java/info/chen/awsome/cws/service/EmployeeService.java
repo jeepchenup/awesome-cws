@@ -17,7 +17,7 @@ public interface EmployeeService {
 
 	void updateEmployee(Employee employee) throws EmployeeException;
 
-	void deleteEmployee(Employee employee) throws EmployeeException;
+	void deleteEmployee(Integer id) throws EmployeeException;
 
 	Set<Department> getDepartmentsByEmployeeID(Integer id) throws EmployeeException;
 }
