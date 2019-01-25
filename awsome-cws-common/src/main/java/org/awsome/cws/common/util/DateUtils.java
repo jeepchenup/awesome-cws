@@ -1,4 +1,4 @@
-package org.awsome.cws.common.utils;
+package org.awsome.cws.common.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.awsome.cws.common.constants.DateConstants;
-import org.awsome.cws.common.utils.DateUtils;
+import org.awsome.cws.common.util.DateUtils;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -27,8 +27,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="employee")
-@DynamicUpdate
 @DynamicInsert
+@DynamicUpdate
 public class Employee implements Serializable{
 
 	private static final long serialVersionUID = 3231056773163630678L;

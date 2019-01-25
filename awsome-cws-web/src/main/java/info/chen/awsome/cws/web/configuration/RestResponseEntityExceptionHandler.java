@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import info.chen.awsome.cws.web.exception.NoSuchDepartmentException;
 import info.chen.awsome.cws.web.exception.NoSuchEmployeeException;
 
 @ControllerAdvice
@@ -53,7 +54,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	}
 
 	// 404
-	@ExceptionHandler(value = { EntityNotFoundException.class, NoSuchEmployeeException.class })
+	@ExceptionHandler(value = { EntityNotFoundException.class, NoSuchEmployeeException.class, NoSuchDepartmentException.class })
 	protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
 		logger.error("Entity Not Found.", ex);
 		final String bodyOfResponse = "Entity Not Found.";

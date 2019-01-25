@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="department")
 @DynamicInsert
@@ -29,6 +31,7 @@ public class Department implements Serializable {
 	@Column(name="dept_name")
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "department")
 	private Set<DepartmentEmployee> deptEmpSet = new HashSet<DepartmentEmployee>();
 
