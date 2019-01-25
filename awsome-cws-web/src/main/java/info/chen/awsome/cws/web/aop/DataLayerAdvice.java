@@ -21,6 +21,7 @@ public class DataLayerAdvice {
 			return obj;
 		} catch (Throwable e) {
 			Logger.error("retrieve data failed");
+			e.printStackTrace();
 		}
 		return null;
 	}
