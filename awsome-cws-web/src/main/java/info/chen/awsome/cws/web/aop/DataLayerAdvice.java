@@ -12,7 +12,7 @@ public class DataLayerAdvice {
 	private static Logger Logger = LoggerFactory.getLogger(DataLayerAdvice.class);
 
 	@Around("info.chen.awsome.cws.web.aop.SystemArchitecture.inDataAccessLayer()")
-	public Object calculateDataAccessTime(ProceedingJoinPoint point) {
+	public Object calculateDataAccessTime(ProceedingJoinPoint point) throws Exception {
 		try {
 			long start = System.currentTimeMillis();
 			Object obj = point.proceed();
@@ -21,8 +21,7 @@ public class DataLayerAdvice {
 			return obj;
 		} catch (Throwable e) {
 			Logger.error("retrieve data failed");
-			e.printStackTrace();
+			throw new Exception();
 		}
-		return null;
 	}
 }

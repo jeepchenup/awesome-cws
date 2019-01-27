@@ -54,15 +54,11 @@ public class SalaryController {
 	}
 	
 	@RequestMapping(value = SalaryRestURIContants.ADD_SALARY, method = RequestMethod.POST, consumes = {RequestContextTypeConstants.JSON})
-	public ResponseEntity<String> addSalary(@RequestBody SalaryDTO salaryDTO) {
+	public ResponseEntity<String> addSalary(@RequestBody SalaryDTO salaryDTO) throws SalaryException {
 		System.out.println(salaryDTO);
 		Salary salary = salaryDTO.transferToSalary();
 		System.out.println(salary);
-		try {
-			salaryService.addSalary(salary);
-		} catch (SalaryException e) {
-			throw new NoSuchSalaryException();
-		}
+		salaryService.addSalary(salary);
 		
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}

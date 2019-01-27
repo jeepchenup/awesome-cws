@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import info.chen.awsome.cws.persist.exception.SalaryException;
 import info.chen.awsome.cws.web.exception.NoSuchDepartmentException;
 import info.chen.awsome.cws.web.exception.NoSuchEmployeeException;
 
@@ -50,6 +51,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	public ResponseEntity<Object> handleBadRequest(final DataIntegrityViolationException ex, final WebRequest request) {
 		logger.error("Data Integrity Violation.", ex);
 		final String bodyOfResponse = "Data Integrity Violation.";
+		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler({ SalaryException.class })
+	public ResponseEntity<Object> handleBadRequest(final SalaryException ex, final WebRequest request) {
+		final String bodyOfResponse = "Access or modify data of salary filed!";
+		logger.error(bodyOfResponse);
 		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 

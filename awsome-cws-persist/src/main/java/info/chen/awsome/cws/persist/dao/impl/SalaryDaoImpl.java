@@ -44,6 +44,9 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 	public Salary getLatestSalary(Integer id) throws SalaryException {
 		LOGGER.info("DAO -> Get the {}'s latest salary.", id);
 		
+		if(id == null)
+			throw new SalaryException("Employee ID must not be NULL.");
+		
 		Query query = getQuery("FROM Salary WHERE emp_no=:empNo ORDER BY to_date desc");
 		query.setInteger("empNo", id);
 		List<Salary> salaries = query.list();
