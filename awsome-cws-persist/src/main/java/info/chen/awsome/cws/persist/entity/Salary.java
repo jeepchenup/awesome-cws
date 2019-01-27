@@ -18,6 +18,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import info.chen.awsome.cws.persist.entity.composite_id.SalaryID;
 
 @Entity
@@ -40,7 +42,7 @@ public class Salary implements Serializable{
 	@Type(type = "date")
 	private Date toDate;
 	
-	// 一条工资信息只能找到一条员工的信息
+	@JsonIgnore
 	@MapsId("emp_no")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "emp_no", referencedColumnName="emp_no", nullable = false)

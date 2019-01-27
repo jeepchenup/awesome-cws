@@ -23,4 +23,14 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryDao.getSalariesByEmployeeID(id);
 	}
 
+	@Override
+	public void addSalary(Salary salary) throws SalaryException {
+		salaryDao.addSalary(salary);
+	}
+
+	@Override
+	public Salary getLatestSalary(Integer id) throws SalaryException {
+		return salaryDao.getLatestSalary(id);
+	}
+
 }
