@@ -13,6 +13,9 @@
         <dependent-module archiveName="awsome-cws-persist-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-persist/awsome-cws-persist">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="awsome-cws-security-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-security/awsome-cws-security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/awsome-cws-web/target/classes"/>
         <property name="context-root" value="awsome-cws-web"/>
     </wb-module>

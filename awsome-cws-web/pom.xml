@@ -27,6 +27,12 @@
 			<artifactId>awsome-cws-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!-- awsome-cws-security -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-security</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- spring web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -53,15 +59,15 @@
 			<artifactId>spring-test</artifactId>
 		</dependency>
 		<!-- spring security web -->
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-web</artifactId>
-			</dependency>
-			<!-- spring security config -->
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-config</artifactId>
-			</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<!-- spring security config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
 		<!-- Servlet+JSP+JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
