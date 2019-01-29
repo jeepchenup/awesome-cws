@@ -65,6 +65,18 @@
 				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!-- spring security web -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- spring security config -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<!-- hibernate core -->
 			<dependency>
 				<groupId>org.hibernate</groupId>

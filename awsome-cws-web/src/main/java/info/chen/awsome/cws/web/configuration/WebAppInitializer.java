@@ -1,7 +1,9 @@
 package info.chen.awsome.cws.web.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
+/**
+ * Assemble the web application's moving parts, like what web.xml does.
+ */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
