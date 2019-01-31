@@ -2,7 +2,7 @@ package info.chen.awsome.cws.web.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import info.chen.awsome.cws.security.configuration.CWSSecurityConfiguration;
+import info.chen.awsome.cws.security.configuration.MultiHttpSecurityConfigration;
 /**
  * Assemble the web application's moving parts, like what web.xml does.
  */
@@ -11,7 +11,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// load other beans just like datasource, sessionFactory
-		return new Class[] { HibernateConfiguration.class, AOPConfiguration.class, CWSSecurityConfiguration.class };
+		return new Class[] { HibernateConfiguration.class, AOPConfiguration.class, MultiHttpSecurityConfigration.class };
 	}
 
 	@Override
