@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>info.chen.awsome.cws</groupId>
+		<artifactId>awsome-cws</artifactId>
+		<version>2019.01-RELEASE</version>
+	</parent>
+	<artifactId>awsome-cws-service</artifactId>
+	<packaging>jar</packaging>
+	<name>awsome-cws-service</name>
+
+	<dependencies>
+		<!-- awsome-cws-common -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- awsome-cws-persist -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-persist</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- spring core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<!-- spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<!-- spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<!-- spring-webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
