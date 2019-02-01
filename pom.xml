@@ -6,7 +6,7 @@
 	<groupId>info.chen.awsome.cws</groupId>
 	<artifactId>awsome-cws</artifactId>
 	<packaging>pom</packaging>
-	<version>2019.01-RELEASE</version>
+	<version>2019.02-SNAPSHOT</version>
 	<name>awsome-cws-root</name>
 
 	<properties>
@@ -88,7 +88,7 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.connector.version}</version>
-				<scope>provide</scope>
+				<scope>provided</scope>
 			</dependency>
 			<!-- json -->
 			<dependency>
