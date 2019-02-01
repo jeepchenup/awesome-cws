@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>info.chen.awsome.cws</groupId>
 		<artifactId>awsome-cws</artifactId>
-		<version>2019.01-SNAPSHOT</version>
+		<version>2019.01-RELEASE</version>
 	</parent>
 
 	<artifactId>awsome-cws-security</artifactId>
@@ -19,6 +19,11 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>awsome-cws-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- spring security config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -29,6 +34,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
+		<!-- servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>

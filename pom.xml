@@ -6,7 +6,7 @@
 	<groupId>info.chen.awsome.cws</groupId>
 	<artifactId>awsome-cws</artifactId>
 	<packaging>pom</packaging>
-	<version>2019.01-SNAPSHOT</version>
+	<version>2019.01-RELEASE</version>
 	<name>awsome-cws-root</name>
 
 	<properties>

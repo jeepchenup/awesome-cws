@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>info.chen.awsome.cws</groupId>
 		<artifactId>awsome-cws</artifactId>
-		<version>2019.01-SNAPSHOT</version>
+		<version>2019.01-RELEASE</version>
 	</parent>
 	<packaging>jar</packaging>
 	<artifactId>awsome-cws-common</artifactId>
