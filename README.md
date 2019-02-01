@@ -26,3 +26,5 @@ It's use a sample database from [here](https://launchpad.net/test-db/).
 ## Solutions
 
 1. If server throws `OutOfMemeryError: PermGen space`, please create `setenv.bat` file manually and put it to this path -> `{$tomcat-folder}\bin\`.
+
+	content: `set JAVA_OPTS=-Dfile.encoding=UTF-8 -Xms128m -Xmx1024m -XX:PermSize=64m -XX:MaxPermSize=256m`
