@@ -49,7 +49,8 @@ public class MultiHttpSecurityConfigration {
 			http.authorizeRequests()
 					.anyRequest().authenticated()
 				.and()
-				.formLogin();
+				.formLogin()
+					.loginPage("/login").permitAll();
 		}
 
 	}
