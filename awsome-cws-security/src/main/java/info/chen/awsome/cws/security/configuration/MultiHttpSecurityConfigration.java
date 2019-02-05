@@ -47,10 +47,15 @@ public class MultiHttpSecurityConfigration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-					.anyRequest().authenticated()
-				.and()
+					.antMatchers(APISecurityConstatnts.CSS_RESOURCES_API, APISecurityConstatnts.JS_RESOURCES_API, APISecurityConstatnts.IMAGES_RESOURCES_API)
+					.permitAll().anyRequest().authenticated().and()
+//					.antMatchers(APISecurityConstatnts.STATIC_RESOURCES_API)
+//					.permitAll().anyRequest().authenticated().and()
+				.authorizeRequests()
+					.anyRequest().authenticated().and()
 				.formLogin()
-					.loginPage("/login").permitAll();
+					.loginPage(APISecurityConstatnts.LOGIN_API)
+					.permitAll();
 		}
 
 	}
