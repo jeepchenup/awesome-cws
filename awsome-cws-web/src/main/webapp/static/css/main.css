@@ -166,7 +166,7 @@ iframe {
   margin: 0 auto;
 }
 
-.container-login100 {
+.container-login {
   width: 100%;  
   min-height: 100vh;
   display: -webkit-box;
@@ -182,7 +182,7 @@ iframe {
 }
 
 
-.wrap-login100 {
+.wrap-login {
   width: 670px;
   background: #fff;
   border-radius: 10px;
@@ -192,7 +192,7 @@ iframe {
 
 /*==================================================================
 [ Title form ]*/
-.login100-form-title {
+.login-form-title {
   width: 100%;
   position: relative;
   z-index: 1;
@@ -212,7 +212,7 @@ iframe {
   padding: 70px 15px 74px 15px;
 }
 
-.login100-form-title-1 {
+.login-form-title-1 {
   font-family: Poppins-Bold;
   font-size: 30px;
   color: #fff;
@@ -221,7 +221,7 @@ iframe {
   text-align: center;
 }
 
-.login100-form-title::before {
+.login-form-title::before {
   content: "";
   display: block;
   position: absolute;
@@ -237,7 +237,7 @@ iframe {
 /*==================================================================
 [ Form ]*/
 
-.login100-form {
+.login-form {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -253,13 +253,13 @@ iframe {
 /*------------------------------------------------------------------
 [ Input ]*/
 
-.wrap-input100 {
+.wrap-input {
   width: 100%;
   position: relative;
   border-bottom: 1px solid #b2b2b2;
 }
 
-.label-input100 {
+.label-input {
   font-family: Poppins-Regular;
   font-size: 15px;
   color: #808080;
@@ -274,7 +274,7 @@ iframe {
 }
 
 /*---------------------------------------------*/
-.input100 {
+.input {
   font-family: Poppins-Regular;
   font-size: 15px;
   color: #555555;
@@ -286,7 +286,7 @@ iframe {
   padding: 0 5px;
 }
 
-.focus-input100 {
+.focus-input {
   position: absolute;
   display: block;
   width: 100%;
@@ -296,7 +296,7 @@ iframe {
   pointer-events: none;
 }
 
-.focus-input100::before {
+.focus-input::before {
   content: "";
   display: block;
   position: absolute;
@@ -315,27 +315,27 @@ iframe {
 
 
 /*---------------------------------------------*/
-input.input100 {
+input.input {
   height: 45px;
 }
 
 
-.input100:focus + .focus-input100::before {
+.input:focus + .focus-input::before {
   width: 100%;
 }
 
-.has-val.input100 + .focus-input100::before {
+.has-val.input + .focus-input::before {
   width: 100%;
 }
 
 /*==================================================================
 [ Restyle Checkbox ]*/
 
-.input-checkbox100 {
+.input-checkbox {
   display: none;
 }
 
-.label-checkbox100 {
+.label-checkbox {
   font-family: Poppins-Regular;
   font-size: 13px;
   color: #999999;
@@ -347,7 +347,7 @@ input.input100 {
   cursor: pointer;
 }
 
-.label-checkbox100::before {
+.label-checkbox::before {
   content: "\f00c";
   font-family: FontAwesome;
   font-size: 13px;
@@ -375,13 +375,13 @@ input.input100 {
   transform: translateY(-50%);
 }
 
-.input-checkbox100:checked + .label-checkbox100::before {
+.input-checkbox:checked + .label-checkbox::before {
   color: #57b846;
 }
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-login100-form-btn {
+.container-login-form-btn {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -391,7 +391,7 @@ input.input100 {
   flex-wrap: wrap;
 }
 
-.login100-form-btn {
+.login-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -416,7 +416,7 @@ input.input100 {
   transition: all 0.4s;
 }
 
-.login100-form-btn:hover {
+.login-form-btn:hover {
   background-color: #333333;
 }
 
@@ -425,17 +425,17 @@ input.input100 {
 [ Responsive ]*/
 
 @media (max-width: 576px) {
-  .login100-form {
+  .login-form {
     padding: 43px 15px 57px 117px;
   }
 }
 
 @media (max-width: 480px) {
-  .login100-form {
+  .login-form {
     padding: 43px 15px 57px 15px;
   }
 
-  .label-input100 {
+  .label-input {
     text-align: left;
     position: unset;
     top: unset;

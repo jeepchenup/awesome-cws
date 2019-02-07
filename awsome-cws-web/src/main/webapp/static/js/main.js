@@ -4,7 +4,7 @@
 
     /*==================================================================
     [ Focus Contact2 ]*/
-    $('.input100').each(function(){
+    $('.input').each(function(){
         $(this).on('blur', function(){
             if($(this).val().trim() != "") {
                 $(this).addClass('has-val');
@@ -17,7 +17,7 @@
 
     /*==================================================================
     [ Validate ]*/
-    var input = $('.validate-input .input100');
+    var input = $('.validate-input .input');
 
     $('.validate-form').on('submit',function(){
         var check = true;
@@ -33,7 +33,7 @@
     });
 
 
-    $('.validate-form .input100').each(function(){
+    $('.validate-form .input').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });
