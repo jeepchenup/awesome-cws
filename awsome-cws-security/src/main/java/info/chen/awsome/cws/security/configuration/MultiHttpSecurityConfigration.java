@@ -50,7 +50,8 @@ public class MultiHttpSecurityConfigration {
 					.antMatchers(APISecurityConstatnts.STATIC_RESOURCES_API).permitAll()
 					.anyRequest().authenticated().and()
 				.formLogin()
-					.loginPage(APISecurityConstatnts.LOGIN_API).successForwardUrl("/")
+					.loginPage(APISecurityConstatnts.LOGIN_API)
+					.loginProcessingUrl(APISecurityConstatnts.LOGIN_API)
 					.permitAll();
 		}
 
