@@ -24,7 +24,7 @@
 					</span>
 				</div>
 
-				<form class="login-form validate-form" action="<c:url value='/login' />" method="post">
+				<form class="login-form validate-form" action="<c:url value='/login' />" method="POST">
 					<div class="wrap-input validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input">Username</span>
 						<input class="input" type="text" name="username" placeholder="Enter username">
@@ -33,7 +33,7 @@
 
 					<div class="wrap-input validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input">Password</span>
-						<input class="input" type="password" name="pass" placeholder="Enter password">
+						<input class="input" type="password" name="password" placeholder="Enter password">
 						<span class="focus-input"></span>
 					</div>
 

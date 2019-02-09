@@ -51,6 +51,8 @@ public class MultiHttpSecurityConfigration {
 					.anyRequest().authenticated().and()
 				.formLogin()
 					.loginPage(APISecurityConstatnts.LOGIN_API)
+					.usernameParameter("username")
+					.passwordParameter("password")
 					.failureUrl(APISecurityConstatnts.LOGIN_FAILED_URI)
 					.permitAll().and()
 				.logout()

@@ -21,7 +21,10 @@
     
     var $form = $('.validate-form');
 
-    $form.on('submit',function(){
+    $form.on('submit',function(e){
+    	
+    	e.preventDefault();
+    	
         var check = true;
 
         for(var i=0; i<input.length; i++) {
@@ -29,6 +32,10 @@
                 showValidate(input[i]);
                 check=false;
             }
+        }
+        
+        if(check) {
+        	this.submit();
         }
 
         return check;
