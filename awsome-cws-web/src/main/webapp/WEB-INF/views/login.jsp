@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- ENABLE EL -->
+<%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
@@ -46,7 +48,7 @@
 						</div>
 					</div>
 					
-					<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<div class="container-login-form-btn">
 						<button class="login-form-btn">Login</button>
 					</div>
