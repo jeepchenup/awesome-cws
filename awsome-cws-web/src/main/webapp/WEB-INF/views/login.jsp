@@ -19,12 +19,11 @@
 		<div class="container-login">
 			<div class="wrap-login">
 				<div class="login-form-title" style="background-image: url(<c:url value='/static/images/background.jpg)'/>; ">
-					<span class="login-form-title-1">
-						Sign In
-					</span>
+					<span class="login-form-title-1">Sign In</span>
 				</div>
 
-				<form class="login-form validate-form" action="<c:url value='/login' />" method="POST">
+				<c:url var="loginURL" value="/login"/>
+				<form class="login-form validate-form" action="${ loginURL }" method="POST">
 					<div class="wrap-input validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input">Username</span>
 						<input class="input" type="text" name="username" placeholder="Enter username">

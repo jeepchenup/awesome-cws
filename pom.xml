@@ -77,6 +77,12 @@
 				<artifactId>spring-security-config</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- spring jdbc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<!-- hibernate core -->
 			<dependency>
 				<groupId>org.hibernate</groupId>

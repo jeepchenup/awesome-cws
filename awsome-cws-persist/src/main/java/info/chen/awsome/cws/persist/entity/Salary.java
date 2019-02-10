@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import info.chen.awsome.cws.persist.entity.composite_id.SalaryID;
 
 @Entity
-@Table(name="salary", schema="awsome_cws")
+@Table(name="salary")
 @DynamicInsert
 @DynamicUpdate
 public class Salary implements Serializable{
