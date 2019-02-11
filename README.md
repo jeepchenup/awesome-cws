@@ -1,6 +1,6 @@
 # <center>awsome-cws</center>
 
-## E-R 图
+## E-R Diagram
 
 Here is a entities relationship graph as below:
 
