@@ -22,8 +22,8 @@
 					<span class="login-form-title-1">Sign In</span>
 				</div>
 
-				<c:url var="loginURL" value="/login"/>
-				<form class="login-form validate-form" action="${ loginURL }" method="POST">
+				<c:url var="loginURI" value="/login"/>
+				<form class="login-form validate-form" action="${ loginURI }" method="POST">
 					<div class="wrap-input validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input">Username</span>
 						<input class="input" type="text" name="username" placeholder="Enter username">
@@ -43,7 +43,8 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt1">Forgot Password?</a>
+							<c:url var="registerURI" value="/register"/>
+							<a href="${ registerURI }" class="txt1">Forgot Password?</a>
 						</div>
 					</div>
 					

@@ -5,14 +5,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import info.chen.awsome.cws.web.controller.api.LoginURIConstants;
+import info.chen.awsome.cws.web.controller.api.AuthenticationURIConstants;
 
 @Controller
-public class LoginController {
+public class AuthenticationController {
 	
-	@RequestMapping(value = LoginURIConstants.LOGIN, method = RequestMethod.GET)
+	@RequestMapping(value = AuthenticationURIConstants.LOGIN, method = RequestMethod.GET)
 	public void login(ModelAndView maView) {
 		maView.setViewName("login");
+	}
+	
+	@RequestMapping(value = AuthenticationURIConstants.REGISTER, method = RequestMethod.GET)
+	public String register() {
+		return "register";
 	}
 	
 }

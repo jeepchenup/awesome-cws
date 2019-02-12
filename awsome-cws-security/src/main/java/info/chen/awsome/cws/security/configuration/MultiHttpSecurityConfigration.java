@@ -37,7 +37,7 @@ public class MultiHttpSecurityConfigration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable()
-				.antMatcher(APISecurityConstatnts.RESTFUL_API)
+				.antMatcher(APISecurityConstatnts.RESTFUL_URI)
 				.authorizeRequests()
 					.anyRequest().authenticated()
 				.and()
@@ -62,10 +62,11 @@ public class MultiHttpSecurityConfigration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-					.antMatchers(APISecurityConstatnts.STATIC_RESOURCES_API).permitAll()
+					.antMatchers(APISecurityConstatnts.STATIC_RESOURCES_URI, APISecurityConstatnts.REGISTER_URI)
+						.permitAll()
 					.anyRequest().authenticated().and()
 				.formLogin()
-					.loginPage(APISecurityConstatnts.LOGIN_API)
+					.loginPage(APISecurityConstatnts.LOGIN_URI)
 					.usernameParameter("username")
 					.passwordParameter("password")
 					.failureUrl(APISecurityConstatnts.LOGIN_FAILED_URI)
