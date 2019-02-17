@@ -25,7 +25,7 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Department> getAllDepartment() throws DepartmentException{
+	public List<Department> getAllDepartment() {
 		LOGGER.info("DAO -> Get all departments");
 		Criteria ctiteria = getCriteria();
 		ctiteria.addOrder(Order.asc("id"));
@@ -33,31 +33,59 @@ public class DepartmentDaoImpl extends AbstractDao<Department> implements Depart
 	}
 
 	@Override
-	public void addDepartment(Department department) throws DepartmentException{
+	public void addDepartment(Department department) throws DepartmentException {
+		
+		if(department == null || department.getId().equals("")) {
+			LOGGER.error("Department Must Not Null.");
+			throw new DepartmentException("Department Must Not Null.");
+		}
+
 		LOGGER.info("DAO -> Add new department : {}", department);
 		persistEntity(department);
 	}
 
 	@Override
 	public void updateDepartment(Department department) throws DepartmentException{
+		
+		if(department == null || department.getId().equals("")) {
+			LOGGER.error("Department Must Not Null.");
+			throw new DepartmentException("Department Must Not Null.");
+		}
+		
 		LOGGER.info("DAO -> Update department : {}", department);
 		updateEntity(department);
 	}
 
 	@Override
 	public void deleteDepartment(Department department) throws DepartmentException{
+		if(department == null || department.getId() == null) {
+			LOGGER.error("Department Or Department ID Must Not Null.");
+			throw new DepartmentException("Department Or Department ID Must Not Null.");
+		}
+
 		LOGGER.info("DAO -> Delete department : {}", department);
 		deleteEntity(department);
 	}
 
 	@Override
 	public Department getDepartmentById(String id) throws DepartmentException{
+		
+		if(id == null || id.equals("")) {
+			LOGGER.error("Department ID Must Not Null.");
+			throw new DepartmentException("Department ID Must Not Null.");
+		}
+		
 		LOGGER.info("DAO -> Query department By {}", id);
 		return (Department) getSession().get(Department.class, id);
 	}
 
 	@Override
 	public Set<Employee> getEmployeesByDepartmentID(String deptNo) throws DepartmentException{
+		
+		if(deptNo == null || deptNo.equals("")) {
+			LOGGER.error("Department ID Must Not Null Or Null Empty.");
+			throw new DepartmentException("Department ID Must Not Null.");
+		}
 		
 		Department department = getDepartmentById(deptNo);
 		

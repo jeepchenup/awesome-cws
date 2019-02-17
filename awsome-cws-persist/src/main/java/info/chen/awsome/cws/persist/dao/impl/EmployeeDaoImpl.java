@@ -23,7 +23,12 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	private static Logger LOGGER = LoggerFactory.getLogger(EmployeeDaoImpl.class);
 	
 	@Override
-	public Employee getEmployeeByEmpID(Integer id) throws EmployeeException{
+	public Employee getEmployeeByEmpID(Integer id) throws EmployeeException {
+		if(id == null) {
+			LOGGER.error("Employee ID Must Not Be Null.");
+			throw new EmployeeException("Employee ID Must Not Be Null.");
+		}
+		
 		LOGGER.info("DAO -> Query employee {}", id);
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
@@ -35,7 +40,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 		
 		List<Employee> employees = null;
 		Criteria critria = getCriteria();
-		if(limitNum != 0) {
+		if(limitNum == null || limitNum == 0) {
 			critria.setMaxResults(limitNum);
 		}
 		employees = critria.list();
@@ -46,24 +51,48 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 
 	@Override
 	public void addEmployee(Employee employee) throws EmployeeException{
+		
+		if(employee == null || employee.getId() == null) {
+			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
+		}
+		
 		LOGGER.info("DAO -> Add Employee: {}", employee);
 		persistEntity(employee);
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) throws EmployeeException{
+		
+		if(employee == null || employee.getId() == null) {
+			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
+		}
+		
 		LOGGER.info("DAO -> Update Employee : {}", employee);
 		updateEntity(employee);
 	}
 
 	@Override
 	public void deleteEmployee(Employee employee) throws EmployeeException{
+		
+		if(employee == null || employee.getId() == null) {
+			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
+		}
+		
 		LOGGER.info("DAO -> Delete Employee : {}", employee);
 		deleteEntity(employee);
 	}
 
 	@Override
 	public Set<Department> getDepartmentsByEmployeeID(Integer id) throws EmployeeException{
+		
+		if(id == null) {
+			LOGGER.error("EmpID Not Be Null.");
+			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
+		}
+		
 		Employee employee = getEmployeeByEmpID(id);
 		Set<DepartmentEmployee> deSet = employee.getDepartmentEmployees();
 		Set<Department> departments = new HashSet<Department>();
