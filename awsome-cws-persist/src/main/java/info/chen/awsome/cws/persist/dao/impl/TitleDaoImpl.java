@@ -19,7 +19,13 @@ public class TitleDaoImpl extends AbstractDao<Title> implements TitleDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Title> getTitlesByEmployeeID(Integer id) throws TitleException{
+	public List<Title> getTitlesByEmployeeID(Integer id) throws TitleException {
+		
+		if(id == null || id < 0) {
+			LOGGER.error("Unvalid Param: {}, Emp ID Must Not Be Null Or Great Than Zero.", id);
+			throw new TitleException("Emp ID Must Not Be Null Or Great Than Zero.");
+		}
+		
 		List<Title> titles = null;
 		Query query = getQuery("FROM Title WHERE emp_no=:empNO");
 		query.setInteger("empNO", id);
@@ -27,5 +33,4 @@ public class TitleDaoImpl extends AbstractDao<Title> implements TitleDao {
 		LOGGER.info("DAO -> Get {} employee's titles: {}", id, titles);
 		return titles;
 	}
-
 }

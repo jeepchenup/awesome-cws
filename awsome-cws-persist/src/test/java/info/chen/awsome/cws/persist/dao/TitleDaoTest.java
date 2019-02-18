@@ -1,5 +1,6 @@
 package info.chen.awsome.cws.persist.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
@@ -30,8 +31,16 @@ public class TitleDaoTest {
 	@Test
 	public void testGetTitlesByEmployeeID() throws TitleException {
 		List<Title> titles = titleDao.getTitlesByEmployeeID(10002);
+		assertEquals(1, titles.size());
 		for(Title title : titles) {
 			System.out.println(title);
 		}
+	}
+	
+	/*********************** Test Exception ***********************/
+	
+	@Test(expected = TitleException.class)
+	public void testGetTitlesByEmployeeIDException() throws TitleException {
+		titleDao.getTitlesByEmployeeID(-1);
 	}
 }
