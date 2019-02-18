@@ -117,4 +117,24 @@ public class EmployeeDaoTest {
 		employeeDao.getDepartmentsByEmployeeID(null);
 	}
 	
+	@Test(expected = EmployeeException.class)
+	public void testGetAllEmployeesException() throws EmployeeException {
+		employeeDao.getAllEmployees(-1);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testAddEmployeeException() throws EmployeeException {
+		employeeDao.addEmployee(null);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testUpdateEmployeeException() throws EmployeeException {
+		employeeDao.updateEmployee(new Employee());
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testDeleteEmployeeException() throws EmployeeException {
+		employeeDao.deleteEmployee(new Employee());
+	}
+	
 }

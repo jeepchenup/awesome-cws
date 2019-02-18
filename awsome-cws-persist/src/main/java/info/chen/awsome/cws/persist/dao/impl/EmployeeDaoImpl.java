@@ -38,6 +38,9 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	@Override
 	public List<Employee> getAllEmployees(Integer limitNum) throws EmployeeException{
 		
+		if(limitNum < 0)
+			throw new EmployeeException("LimitNum Must Great than Zero.");
+		
 		List<Employee> employees = null;
 		Criteria critria = getCriteria();
 		if(limitNum == null || limitNum == 0) {
@@ -52,8 +55,8 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	@Override
 	public void addEmployee(Employee employee) throws EmployeeException{
 		
-		if(employee == null || employee.getId() == null) {
-			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+		if(employee == null) {
+			LOGGER.error("Employee Not Be Null.");
 			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
 		}
 		
