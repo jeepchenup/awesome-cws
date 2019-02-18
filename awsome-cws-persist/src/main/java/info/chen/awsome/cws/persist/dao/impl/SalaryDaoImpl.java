@@ -19,7 +19,13 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Salary> getSalariesByEmployeeID(Integer id) throws SalaryException{
+	public List<Salary> getSalariesByEmployeeID(Integer id) throws SalaryException {
+		
+		if(id == null || id < 0) {
+			LOGGER.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
+			throw new SalaryException("Employee ID Must Not Null Or Must Great than Zero.");
+		}
+		
 		LOGGER.info("DAO -> Get employee: {}'s salaries", id);
 		Query query = getQuery("FROM Salary WHERE emp_no=:emp_no");
 		query.setInteger("emp_no", id);
@@ -28,6 +34,16 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 
 	@Override
 	public void addSalary(Salary salary) throws SalaryException {
+		
+		if(salary == null || 
+		   salary.getSalaryID() == null || 
+		   salary.getSalaryID().getEmpNo() == null ||
+		   salary.getSalaryID().getEmpNo() > 0 ||
+		   salary.getSalaryID().getFromDate() == null) {
+			LOGGER.error("SalaryID Must Not Be Null.");
+			throw new SalaryException("SalaryID Must Not Be Null.");
+		}
+		
 		Integer empId = salary.getSalaryID().getEmpNo();
 		LOGGER.info("DAO -> Add employee: {}'s salary", empId);
 		
@@ -42,10 +58,13 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Salary getLatestSalary(Integer id) throws SalaryException {
-		LOGGER.info("DAO -> Get the {}'s latest salary.", id);
 		
-		if(id == null)
-			throw new SalaryException("Employee ID must not be NULL.");
+		if(id == null || id < 0) {
+			LOGGER.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
+			throw new SalaryException("Employee ID Must Not Null Or Must Great than Zero.");
+		}
+		
+		LOGGER.info("DAO -> Get the {}'s latest salary.", id);
 		
 		Query query = getQuery("FROM Salary WHERE emp_no=:empNo ORDER BY to_date desc");
 		query.setInteger("empNo", id);

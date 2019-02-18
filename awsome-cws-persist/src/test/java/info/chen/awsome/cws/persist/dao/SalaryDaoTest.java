@@ -34,9 +34,7 @@ public class SalaryDaoTest {
 	@Test
 	public void testGetSalariesByEmployeeID() throws SalaryException {
 		List<Salary> salaries = salaryDao.getSalariesByEmployeeID(10001);
-		for(Salary salary : salaries) {
-			System.out.println(salary);
-		}
+		assertEquals(17, salaries.size());
 	}
 	
 	@Test
@@ -64,5 +62,22 @@ public class SalaryDaoTest {
 		salary.setSalaryID(salaryID);
 		
 		salaryDao.addSalary(salary);
+	}
+	
+	/*********************** Test Exception ***********************/
+	
+	@Test(expected = SalaryException.class)
+	public void testGetSalariesByEmployeeIDException() throws SalaryException {
+		salaryDao.getSalariesByEmployeeID(-1);
+	}
+	
+	@Test(expected = SalaryException.class)
+	public void testGetLatestSalaryException() throws SalaryException {
+		salaryDao.getLatestSalary(-1);
+	}
+	
+	@Test(expected = SalaryException.class)
+	public void testAddSalaryException() throws SalaryException {
+		salaryDao.addSalary(new Salary());
 	}
 }
