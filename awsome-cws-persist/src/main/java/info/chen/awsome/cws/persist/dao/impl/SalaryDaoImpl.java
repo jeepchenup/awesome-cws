@@ -2,9 +2,9 @@ package info.chen.awsome.cws.persist.dao.impl;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import info.chen.awsome.cws.persist.dao.AbstractDao;
@@ -15,18 +15,18 @@ import info.chen.awsome.cws.persist.exception.SalaryException;
 @Repository("salaryDao")
 public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(SalaryDaoImpl.class);
+	private static final Logger logger = LogManager.getLogger(SalaryDaoImpl.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Salary> getSalariesByEmployeeID(Integer id) throws SalaryException {
 		
 		if(id == null || id < 0) {
-			LOGGER.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
+			logger.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
 			throw new SalaryException("Employee ID Must Not Null Or Must Great than Zero.");
 		}
 		
-		LOGGER.info("DAO -> Get employee: {}'s salaries", id);
+		logger.info("DAO -> Get employee: {}'s salaries", id);
 		Query query = getQuery("FROM Salary WHERE emp_no=:emp_no");
 		query.setInteger("emp_no", id);
 		return query.list();
@@ -40,12 +40,12 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 		   salary.getSalaryID().getEmpNo() == null ||
 		   salary.getSalaryID().getEmpNo() > 0 ||
 		   salary.getSalaryID().getFromDate() == null) {
-			LOGGER.error("SalaryID Must Not Be Null.");
+			logger.error("SalaryID Must Not Be Null.");
 			throw new SalaryException("SalaryID Must Not Be Null.");
 		}
 		
 		Integer empId = salary.getSalaryID().getEmpNo();
-		LOGGER.info("DAO -> Add employee: {}'s salary", empId);
+		logger.info("DAO -> Add employee: {}'s salary", empId);
 		
 		Salary latestSalary = getLatestSalary(empId);
 		if(latestSalary != null) {
@@ -60,11 +60,11 @@ public class SalaryDaoImpl extends AbstractDao<Salary> implements SalaryDao {
 	public Salary getLatestSalary(Integer id) throws SalaryException {
 		
 		if(id == null || id < 0) {
-			LOGGER.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
+			logger.error("Unvalid Param: {}, Employee ID Must Not Null Or Must Great than Zero.", id);
 			throw new SalaryException("Employee ID Must Not Null Or Must Great than Zero.");
 		}
 		
-		LOGGER.info("DAO -> Get the {}'s latest salary.", id);
+		logger.info("DAO -> Get the {}'s latest salary.", id);
 		
 		Query query = getQuery("FROM Salary WHERE emp_no=:empNo ORDER BY to_date desc");
 		query.setInteger("empNo", id);

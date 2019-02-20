@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Criteria;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import info.chen.awsome.cws.persist.dao.AbstractDao;
@@ -20,16 +20,16 @@ import info.chen.awsome.cws.persist.exception.EmployeeException;
 @Repository
 public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao{
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(EmployeeDaoImpl.class);
+	private static final Logger logger = LogManager.getLogger(EmployeeDaoImpl.class);
 	
 	@Override
 	public Employee getEmployeeByEmpID(Integer id) throws EmployeeException {
 		if(id == null) {
-			LOGGER.error("Employee ID Must Not Be Null.");
+			logger.error("Employee ID Must Not Be Null.");
 			throw new EmployeeException("Employee ID Must Not Be Null.");
 		}
 		
-		LOGGER.info("DAO -> Query employee {}", id);
+		logger.info("DAO -> Query employee {}", id);
 		Employee employee = (Employee) getSession().get(Employee.class, id);
 		return employee;
 	}
@@ -48,7 +48,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 		}
 		employees = critria.list();
 		
-		LOGGER.info("DAO -> Get All Employees, total size is {}", employees.size());
+		logger.info("DAO -> Get All Employees, total size is {}", employees.size());
 		return employees;
 	}
 
@@ -56,11 +56,11 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	public void addEmployee(Employee employee) throws EmployeeException{
 		
 		if(employee == null) {
-			LOGGER.error("Employee Not Be Null.");
+			logger.error("Employee Not Be Null.");
 			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
 		}
 		
-		LOGGER.info("DAO -> Add Employee: {}", employee);
+		logger.info("DAO -> Add Employee: {}", employee);
 		persistEntity(employee);
 	}
 
@@ -68,11 +68,11 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	public void updateEmployee(Employee employee) throws EmployeeException{
 		
 		if(employee == null || employee.getId() == null) {
-			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+			logger.error("Employee Not Be Null Or EmpID Not Be Null.");
 			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
 		}
 		
-		LOGGER.info("DAO -> Update Employee : {}", employee);
+		logger.info("DAO -> Update Employee : {}", employee);
 		updateEntity(employee);
 	}
 
@@ -80,11 +80,11 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	public void deleteEmployee(Employee employee) throws EmployeeException{
 		
 		if(employee == null || employee.getId() == null) {
-			LOGGER.error("Employee Not Be Null Or EmpID Not Be Null.");
+			logger.error("Employee Not Be Null Or EmpID Not Be Null.");
 			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
 		}
 		
-		LOGGER.info("DAO -> Delete Employee : {}", employee);
+		logger.info("DAO -> Delete Employee : {}", employee);
 		deleteEntity(employee);
 	}
 
@@ -92,7 +92,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 	public Set<Department> getDepartmentsByEmployeeID(Integer id) throws EmployeeException{
 		
 		if(id == null) {
-			LOGGER.error("EmpID Not Be Null.");
+			logger.error("EmpID Not Be Null.");
 			throw new EmployeeException("Employee Not Be Null Or EmpID Not Be Null.");
 		}
 		
@@ -103,7 +103,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 		while(iterator.hasNext()) {
 			departments.add(iterator.next().getDepartment());
 		}
-		LOGGER.info("DAO -> {} employee works for [{}]", id, departments);
+		logger.info("DAO -> {} employee works for [{}]", id, departments);
 		return departments;
 	}
 	
