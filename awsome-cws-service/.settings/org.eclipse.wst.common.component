@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="awsome-cws-service">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
         <dependent-module archiveName="awsome-cws-persist-2019.01-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/awsome-cws-persist/awsome-cws-persist">
             <dependency-type>uses</dependency-type>
         </dependent-module>
