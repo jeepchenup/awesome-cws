@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="300">
+<Configuration status="WARN" monitorInterval="30">
 
 	<properties>
-		<property name="LOG_HOME">F:/logs</property>
+		<property name="LOG_HOME">./logs</property>
 		<property name="FILE_NAME">mylog</property>
 	</properties>
 
@@ -12,12 +12,32 @@
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %l%n%level: %msg %n" />
 		</Console>
 
+		<RollingRandomAccessFile name="file"
+								 fileName="${LOG_HOME}/${FILE_NAME}.log"
+								 filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i.log">
+			
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %l%n%level: %msg %n" />
+			
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			
+			<!-- 指定最多保留的文件个数 -->
+			<DefaultRolloverStrategy max="20" />
+			
+		</RollingRandomAccessFile>
 	</Appenders>
 
 	<Loggers>
 		<Root level="INFO">
 			<AppenderRef ref="Console" />
 		</Root>
+		
+		<Logger name="info.chen.awsome.cws.persist" level="INFO">
+			<AppenderRef ref="file" />
+		</Logger>
+		
 	</Loggers>
 
 </Configuration>
