@@ -6,7 +6,7 @@
 	<groupId>info.chen.awsome.cws</groupId>
 	<artifactId>awsome-cws</artifactId>
 	<packaging>pom</packaging>
-	<version>2019.01-RELEASE</version>
+	<version>2019.02-SNAPSHOT</version>
 	<name>awsome-cws-root</name>
 
 	<properties>
@@ -16,6 +16,7 @@
 		<jackson.version>2.9.8</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
+		<log4j2.version>2.11.1</log4j2.version>
 	</properties>
 
 	<modules>
@@ -77,6 +78,12 @@
 				<artifactId>spring-security-config</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- spring jdbc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<!-- hibernate core -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -88,7 +95,7 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.connector.version}</version>
-				<scope>provide</scope>
+				<scope>provided</scope>
 			</dependency>
 			<!-- json -->
 			<dependency>
@@ -128,21 +135,22 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- log4j and slf4j -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j2.version}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.25</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j2.version}</version>
 		</dependency>
 	</dependencies>
 

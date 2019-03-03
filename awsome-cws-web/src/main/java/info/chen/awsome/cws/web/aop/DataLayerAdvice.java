@@ -1,15 +1,15 @@
 package info.chen.awsome.cws.web.aop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 
 @Aspect
 public class DataLayerAdvice {
 	
-	private static Logger Logger = LoggerFactory.getLogger(DataLayerAdvice.class);
+	private static final Logger Logger = LogManager.getLogger(DataLayerAdvice.class);
 
 	@Around("info.chen.awsome.cws.web.aop.SystemArchitecture.inDataAccessLayer()")
 	public Object calculateDataAccessTime(ProceedingJoinPoint point) throws Exception {

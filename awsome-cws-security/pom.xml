@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>info.chen.awsome.cws</groupId>
 		<artifactId>awsome-cws</artifactId>
-		<version>2019.01-RELEASE</version>
+		<version>2019.02-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>awsome-cws-security</artifactId>
@@ -33,6 +33,11 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<!-- spring jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 		<!-- servlet -->
 		<dependency>

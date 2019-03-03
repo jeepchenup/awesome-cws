@@ -25,12 +25,21 @@ public abstract class AbstractDao<T extends Serializable> {
 		return sessionFactory.getCurrentSession();
 	}
 	
+	/**
+	 * QBC
+	 * @return
+	 */
 	protected Criteria getCriteria() {
 		return getSession().createCriteria(persistentClass);
 	}
 	
-	protected Query getQuery(String queryString) {
-		return getSession().createQuery(queryString);
+	/**
+	 * HQL
+	 * @param HQL
+	 * @return
+	 */
+	protected Query getQuery(String HQL) {
+		return getSession().createQuery(HQL);
 	}
 	
 	public void persistEntity(T entity) {

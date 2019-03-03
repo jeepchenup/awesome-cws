@@ -88,5 +88,33 @@ public class DepartmentDaoTest extends TestCase {
 		Set<Employee> employees = departmentDao.getEmployeesByDepartmentID(departmentID);
 		System.out.println(department.getName() + " has " + employees.size() + " employees");
 	}
-
+	
+	/*********************** Test Exception ***********************/
+	
+	@Test(expected = DepartmentException.class)
+	public void testGetDepartmentByIdException() throws DepartmentException {
+		departmentDao.getDepartmentById(null);
+	}
+	
+	@Test(expected = DepartmentException.class)
+	public void testAddDepartmentException() throws DepartmentException {
+		departmentDao.addDepartment(null);
+	}
+	
+	@Test(expected = DepartmentException.class)
+	public void testUpdateDepartmentException() throws DepartmentException {
+		departmentDao.updateDepartment(null);
+	}
+	
+	@Test(expected = DepartmentException.class)
+	public void testDeleteDepartmentException() throws DepartmentException {
+//		departmentDao.deleteDepartment(null);
+		departmentDao.deleteDepartment(new Department());
+	}
+	
+	@Test(expected = DepartmentException.class)
+	public void testGetEmployeesByDepartmentIDException() throws DepartmentException {
+		departmentDao.getEmployeesByDepartmentID("");
+	}
+	
 }

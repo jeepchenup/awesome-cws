@@ -104,5 +104,37 @@ public class EmployeeDaoTest {
 		Employee deletedEmployee = employeeDao.getEmployeeByEmpID(500001);
 		assertNull(deletedEmployee);
 	}
-
+	
+	/*********************** Test Exception ***********************/
+	
+	@Test(expected = EmployeeException.class)
+	public void testGetEmployeeByEmpIDException() throws EmployeeException {
+		employeeDao.getEmployeeByEmpID(null);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testGetDepartmentsByEmployeeIDException() throws EmployeeException {
+		employeeDao.getDepartmentsByEmployeeID(null);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testGetAllEmployeesException() throws EmployeeException {
+		employeeDao.getAllEmployees(-1);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testAddEmployeeException() throws EmployeeException {
+		employeeDao.addEmployee(null);
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testUpdateEmployeeException() throws EmployeeException {
+		employeeDao.updateEmployee(new Employee());
+	}
+	
+	@Test(expected = EmployeeException.class)
+	public void testDeleteEmployeeException() throws EmployeeException {
+		employeeDao.deleteEmployee(new Employee());
+	}
+	
 }

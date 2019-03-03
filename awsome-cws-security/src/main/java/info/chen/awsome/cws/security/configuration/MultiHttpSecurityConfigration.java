@@ -1,13 +1,18 @@
 package info.chen.awsome.cws.security.configuration;
 
+import javax.sql.DataSource;
+
 import org.awsome.cws.common.constants.APISecurityConstatnts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 /**
  * 1. RESTFUL API close the CSRF function and be authenticated by basic HTTP.
@@ -32,7 +37,7 @@ public class MultiHttpSecurityConfigration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable()
-				.antMatcher(APISecurityConstatnts.RESTFUL_API)
+				.antMatcher(APISecurityConstatnts.RESTFUL_URI)
 				.authorizeRequests()
 					.anyRequest().authenticated()
 				.and()
@@ -44,12 +49,34 @@ public class MultiHttpSecurityConfigration {
 	@Configuration
 	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 		
+		@Autowired
+		DataSource dataSource;
+		
+		@Bean
+		public PersistentTokenRepository persistentTokenRepository() {
+			JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+			db.setDataSource(dataSource);
+			return db;
+		}
+		
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-					.anyRequest().authenticated()
-				.and()
-				.formLogin();
+					.antMatchers(APISecurityConstatnts.STATIC_RESOURCES_URI, APISecurityConstatnts.REGISTER_URI)
+						.permitAll()
+					.anyRequest().authenticated().and()
+				.formLogin()
+					.loginPage(APISecurityConstatnts.LOGIN_URI)
+					.usernameParameter("username")
+					.passwordParameter("password")
+					.failureUrl(APISecurityConstatnts.LOGIN_FAILED_URI)
+					.permitAll().and()
+				.logout()
+					.permitAll().and()
+				.rememberMe()
+					.rememberMeParameter("remember-me")
+					.tokenRepository(persistentTokenRepository())
+					.tokenValiditySeconds(60);
 		}
 
 	}
